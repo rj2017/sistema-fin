@@ -1,0 +1,31 @@
+@import colors
+
+=text-claro($tam)
+	font-size: $tam
+	color: $primary-color-text
+
+=text-accent($tam)
+	font-size: $tam
+	color: $accent-color
+
+=text-escuro($tam)
+	font-size: $tam
+	color: $secondary-text-color
+
+=text-atention($tam)
+	font-size: $tam
+	color: $text-atention
+
+/** medias queryes **/
+
+@mixin tela_media
+	@media only screen and(max-width:1200px)
+		@content
+
+@mixin phone
+	@media only screen and(max-width:768px)
+		@content
+
+@mixin phone-pq
+	@media only screen and(max-width:480px)
+		@content
