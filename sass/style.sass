@@ -1,6 +1,8 @@
 @import colors
 @import mixins
 
+/** variaveis globais **/
+
 .text-right
 	text-align: right
 
@@ -12,6 +14,15 @@ body, html
 	padding: 0
 	border-box: box-sizing
 	font-family: 'Open Sans', sans-serif
+
+.left
+	float: left
+
+.right
+	float: right
+
+.conteudo
+	min-height: calc(100vh - 200px)
 
 /* sessão login */
 
@@ -87,7 +98,7 @@ section.login
 
 header
 	width: 100%
-	height: 70px
+	height: 80px
 	background-color: $primary-color-dark
 
 	img
@@ -162,10 +173,26 @@ header
 				+text-claro(18px)
 				border-radius: 10px 10px 6px 6px
 
+/** footer **/
 
+footer
+	width: 100%
+	height: auto
+	background-color: $primary-color-dark
+	border-top: 2px solid white
+	padding: 30px 2%
+	text-align: center
+
+	p
+		+text-claro(20px)
 
 /**media queryes**/
 
 @include phone-pq
 	section.login img
 		width: 200px
+
+@include phone
+	.left, .right
+		float: none
+		display: block

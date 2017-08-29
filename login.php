@@ -1,6 +1,7 @@
 <?php
 include "php/conexao_banco.php";
 include "php/logar.php";
+include "config.php";
 ?>
 <!DOCTYPE html>
 <html>

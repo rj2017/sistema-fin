@@ -1,5 +1,5 @@
 <?php
-	if (isset($_POST['acao'])) {
+	/*if (isset($_POST['acao'])) {
 		$usuario = $_POST['login'];
 		$senha = $_POST['senha'];
 
@@ -8,10 +8,10 @@
 		$info = $sql->fetchAll();
 
 		if (isset($info)) {
-			header("location:home.php");
+			header("location:home");
 		}else if($info == 'array()'){
 			echo "<script>alert('usuário não cadastrado!')</script>";
 
 		}
-	}
+	}*/
 ?>
