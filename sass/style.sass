@@ -22,7 +22,7 @@ body, html
 	float: right
 
 .conteudo
-	min-height: calc(100vh - 200px)
+	min-height: calc(100vh - 180px)
 
 /* sessão login */
 
@@ -51,27 +51,13 @@ section.login
 			padding: 20px
 
 			input[type="text"], input[type="password"]
-				width: 100%
-				height: 50px
+				+input-norm1(100%)
 				margin-top: 20px
-				background-color: white
-				border: 0
-				border-radius: 8px
-				outline: none
-				padding-left: 8px
-				+text-escuro(18px)
 
 			input[type="submit"]
-				width: 200px
-				height: 40px
 				margin: 20px auto
 				display: block
-				background-color: $accent-color
-				border: 0
-				+text-claro(18px)
-
-				&:hover
-					background-color: $accent-color2
+				+input-norm2(200px)
 
 
 			a
@@ -185,6 +171,67 @@ footer
 
 	p
 		+text-claro(20px)
+/** parametrizaca usuarios grupos **/
+
+section.cadastrar
+	width: 100%
+
+	.wraper-form
+		margin: 20px 2%
+
+		p
+			+text-escuro(24px)
+
+		form
+			text-align: center
+			background-color: $primary-color-rgba
+			padding: 10px
+
+			input[type="text"], input[type="password"], select
+				+input-norm1(100%)
+				max-width: 800px
+				margin-top: 10px
+
+.wraper-btns
+	margin-top: 20px
+
+	input[type="submit"]:nth-of-type(1)
+		+input-norm2(200px)
+
+	input[type="submit"]:nth-of-type(2)
+		+input-norm3(200px)
+		margin-left: 20px
+
+table
+	width: 100%
+
+	th
+		background-color: $primary-color-rgba
+		padding: 5px
+		+text-escuro(20px)
+		text-align: center
+		border: 3px solid $divider-color
+
+	td
+		padding: 5px
+		+text-escuro(18px)
+		text-align: center
+		border: 3px solid $divider-color
+
+	i
+		color: $text-atention
+		display: inline-block
+		cursor: pointer
+
+/** Cad grupo usuario **/
+
+.retorno
+	width: 100%
+	
+	.wraper-retorno
+		margin: 20px 2%
+
+
 
 /**media queryes**/
 

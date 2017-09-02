@@ -23,6 +23,40 @@
 	-ms-box-shadow: $val
 	box-shadow: $val
 
+=input-norm1($val)
+	width: $val
+	height: 40px
+	background-color: white
+	border: 0
+	border-radius: 8px
+	outline: none
+	padding-left: 8px
+	+text-escuro(18px)
+
+=input-norm2($val)
+	width: $val
+	height: 40px
+	background-color: $accent-color
+	border: 0
+	border-radius: 8px
+	+text-claro(18px)
+
+	&:hover
+		background-color: $accent-color2
+		border-radius: 8px
+
+=input-norm3($val)
+	width: $val
+	height: 40px
+	background-color: $primary-color-dark
+	border: 0
+	border-radius: 8px
+	+text-claro(18px)
+
+	&:hover
+		background-color: $primary-color
+		border-radius: 8px
+
 =transform-translate($val1 , $val2)
 	-moz-transform: translate($val1 , $val2)
 	-webkit-transform: translate($val1 , $val2)

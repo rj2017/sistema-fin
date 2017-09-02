@@ -16,14 +16,27 @@
 </head>
 <body>
 
+<?php include("header.php")  ?>
 	<section class="cadastrar">
-		<form method="post">
-			<input type="text" name="descricao" placeholder="nome" required />
-			<input type="submit" value="Enviar" name="acao"/>
-		</form>
+		<div class="wraper-form">
+			<form method="post">
+				<p>Cadastrar ou pesquisar grupos de usuários</p>
+				<input type="text" name="descricao" placeholder="nome" required />
+				<div class="wraper-btns">
+						<input type="submit" name="cadastrar" value="cadastrar" />
+						<input type="submit" name="pesquisar"  value="pesquisar" />
+					</div>
+			</form>
+		</div>
 	</section>
+</section>
 
-	<script src="js/jquery-3.2.1.min.js"/>
-	<script src="js/bootstrap.js" />
+<?php include("footer.php")  ?>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/functions.js"></script>
+	<script src="js/formulario.js"></script>
+	
 </body>
 </html>
