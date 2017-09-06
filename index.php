@@ -1,13 +1,20 @@
 
 <?php
+		include("config.php");
 
-	if(isset($_GET['url'])){
-		if(file_exists($_GET['url']).'.php'){
-			include($_GET['url'].'.php');
+		if(Painel::logado() == false){
+			include("login.php");
 		}else{
-			include('404.php');
+			include("home.php");
 		}
-	}else{
-		include('login.php');
-	}
+
+	// if(isset($_GET['url'])){
+	// 	if(file_exists($_GET['url']).'.php'){
+	// 		include($_GET['url'].'.php');
+	// 	}else{
+	// 		include('404.php');
+	// 	}
+	// }else{
+	// 	include('login.php');
+	// }
 ?>

@@ -37,6 +37,11 @@ section.login {
     top: 50%;
     left: 50%;
     border-radius: 8px;
+    -moz-box-shadow: 6px 6px 0px 0px rgba(100, 100, 100, 0.25);
+    -webkit-box-shadow: 6px 6px 0px 0px rgba(100, 100, 100, 0.25);
+    -o-box-shadow: 6px 6px 0px 0px rgba(100, 100, 100, 0.25);
+    -ms-box-shadow: 6px 6px 0px 0px rgba(100, 100, 100, 0.25);
+    box-shadow: 6px 6px 0px 0px rgba(100, 100, 100, 0.25);
     -moz-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
@@ -44,7 +49,7 @@ section.login {
     transform: translate(-50%, -50%); }
     section.login .wraper-login p {
       font-size: 20px;
-      color: #757575;
+      color: #FFC107;
       margin-top: 20px; }
     section.login .wraper-login form {
       padding: 20px; }
@@ -91,6 +96,15 @@ section.login {
     width: 300px;
     top: 20px;
     left: 20px; }
+
+.erro-box {
+  width: 100%;
+  background-color: #D32F2F;
+  padding: 5px;
+  font-size: 18px;
+  color: #FFFFFF; }
+  .erro-box i {
+    margin-right: 5px; }
 
 /** menu */
 header {
@@ -193,6 +207,14 @@ section.cadastrar {
     section.cadastrar .wraper-form p {
       font-size: 24px;
       color: #757575; }
+    section.cadastrar .wraper-form .wraper-text {
+      max-width: 800px;
+      margin: 10px auto; }
+    section.cadastrar .wraper-form label {
+      font-size: 18px;
+      color: #757575;
+      display: block;
+      text-align: left; }
     section.cadastrar .wraper-form form {
       text-align: center;
       background-color: rgba(0, 188, 212, 0.2);

@@ -41,10 +41,11 @@ section.login
 		top: 50%
 		left: 50%
 		border-radius: 8px
+		+box-shadow(6px 6px 0px 0px rgba(100, 100, 100, 0.25))
 		+transform-translate(-50%,-50%)
 
 		p
-			+text-escuro(20px)
+			+text-accent(20px)
 			margin-top: 20px
 
 		form
@@ -79,6 +80,15 @@ section.login
 		width: 300px
 		top: 20px
 		left: 20px
+
+.erro-box
+	width: 100%
+	background-color: $text-atention
+	padding: 5px
+	+text-claro(18px)
+
+	i
+		margin-right: 5px
 
 /** menu **/
 
@@ -178,9 +188,19 @@ section.cadastrar
 
 	.wraper-form
 		margin: 20px 2%
-
+	
 		p
 			+text-escuro(24px)
+
+		.wraper-text
+			max-width: 800px
+			margin: 10px auto
+
+
+		label
+			+text-escuro(18px)
+			display: block
+			text-align: left
 
 		form
 			text-align: center

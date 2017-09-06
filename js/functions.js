@@ -6,6 +6,11 @@ $(function(){
 			$('.perfil-single').slideToggle();
 		});
 
+		$('form').submit(function(){
+
+			$('.limpar').html("");
+			
+		});
 
 		//fa fa-times
 		//fa fa-bars

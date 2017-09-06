@@ -1,4 +1,10 @@
-<?php include("config.php");  ?>
+<?php include("config.php");
+
+if (isset($_GET['loggout'])) {
+	Painel::loggout();
+}
+
+?>
 <header>
 		<nav class="menu">
 			<a realtime="home" href="<?php echo INCLUDE_PATH;?>home"><img src="images/logo2.png"></a>
@@ -22,7 +28,7 @@
 			<div class="perfil-single">
 				<a href="">Perfil</a>
 				<a href="">Contato</a>
-				<a href="login">Sair</a>
+				<a href="<?php echo INCLUDE_PATH;?>?loggout">Sair</a>
 			</div>
 		</nav>
 		<div class="clear"></div>
