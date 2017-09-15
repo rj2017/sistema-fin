@@ -12,6 +12,10 @@
 	font-size: $tam
 	color: $secondary-text-color
 
+=text-escuro2($tam)
+	font-size: $tam
+	color: $primary-text-color
+
 =text-atention($tam)
 	font-size: $tam
 	color: $text-atention
@@ -23,11 +27,21 @@
 	-ms-box-shadow: $val
 	box-shadow: $val
 
+=input-norm($val)
+	width: $val
+	height: 40px
+	background-color: rgba(255,255,255,0.5)
+	border: 1px solid $divider-color
+	border-radius: 8px
+	outline: none
+	padding-left: 8px
+	+text-escuro(18px)
+
 =input-norm1($val)
 	width: $val
 	height: 40px
-	background-color: white
-	border: 0
+	background-color: $primary-color-rgba
+	border: 1px solid $divider-color
 	border-radius: 8px
 	outline: none
 	padding-left: 8px
@@ -67,7 +81,7 @@
 /** medias queryes **/
 
 @mixin tela_media
-	@media only screen and(max-width:1200px)
+	@media only screen and(max-width:900px)
 		@content
 
 @mixin phone

@@ -28,7 +28,6 @@ if (isset($_POST['pesquisar'])) {
 				echo '<td>'.$id.'</td>';
 				echo '<td>'.$desc.'</td>';
 				echo '<td>'.$ativo.'</td>';
-				echo '<td><a href="?excluir"><i class="fa fa-times" value="'.$id.' "></i></a></td>';
 				echo "</tr>";
 
 
@@ -62,7 +61,6 @@ if (isset($_POST['pesquisar'])) {
 			echo '<td>'.$id.'</td>';
 			echo '<td>'.$desc.'</td>';
 			echo '<td>'.$ativo.'</td>';
-			echo '<td><a href="?excluir"><i class="fa fa-times" value="'.$id.' "></i></a></td>';
 			echo "</tr>";
 
 		}

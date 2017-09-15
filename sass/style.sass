@@ -10,9 +10,12 @@
 	clear: both
 
 body, html
+	height: 100%
+	width: 100%
 	margin: 0
 	padding: 0
 	border-box: box-sizing
+	background-color: $divider-color
 	font-family: 'Open Sans', sans-serif
 
 .left
@@ -21,8 +24,17 @@ body, html
 .right
 	float: right
 
-.conteudo
-	min-height: calc(100vh - 180px)
+.w100
+	width: 100%
+
+.w50
+	width: 49% 
+
+.w25
+	width: 25%
+
+.container
+	padding: 0 2%
 
 /* sessão login */
 
@@ -52,7 +64,7 @@ section.login
 			padding: 20px
 
 			input[type="text"], input[type="password"]
-				+input-norm1(100%)
+				+input-norm(100%)
 				margin-top: 20px
 
 			input[type="submit"]
@@ -90,97 +102,199 @@ section.login
 	i
 		margin-right: 5px
 
+
 /** menu **/
 
+.menu-aside
+	overflow-y: auto
+	overflow-x: hidden
+	height: 100vh
+	background-color: $secondary-text-color
+	position: fixed
+	left: 0
+	top: 0
+	
+	.menu-aside-wrapper
+		width: 300px
+
+	.box-usuario
+		text-align: center
+		+text-claro(20px)
+		padding: 10px
+
+		.imagem-usuario	img
+			width: 110px
+			height: 110px
+			border-radius: 50%
+			border: 3px solid $primary-text-color
+
+		.avatar-usuario
+			width: 110px
+			height: 110px
+			border-radius: 50%
+			border: 3px solid $primary-text-color
+			display: inline-block
+			text-align: left
+
+			i
+				font-size: 50px
+				color: white
+				position: relative
+				top: 50%
+				left: 50%
+				+transform-translate(-50%,-50%)
+
+		.nome-usuario
+			text-align: center
+			+text-accent(16px)
+			font-weight: 300
+
+			p
+				margin-top: 2px
+
+	.item-menu
+		width: 100%
+		margin-top: 20px
+
+		h2
+			+text-claro(20px)
+			background-color: $primary-text-color
+			padding: 10px
+			margin: 0
+
+		a
+			+text-claro(18px)
+			display: block
+			padding: 5px
+			border-bottom: 1px solid $divider-color
+
+			&:hover
+				text-decoration: none
+				background-color: $divider-color
+				+text-escuro(18px)
+
 header
-	width: 100%
-	height: 80px
+	width: calc(100% - 300px)
+	left: 300px
+	position: relative
+	padding: 10px 2%
 	background-color: $primary-color-dark
+	
+
 
 	img
-		width: 200px
-		margin: 10px
+		width: 180px
+		margin-left: 30px
 		float: left
-
-	.dropdown
-		position: relative
-		display: inline-block
-		+text-claro(28px)
-		margin: 10px 20px
-		cursor: pointer
-		min-width: 200px
-		text-align: center
-
-		&:hover .dropdown-content
-			display: block
-
-	.dropdown-content
-		display: none
-		position: absolute
-		min-width: 200px
-		text-align: center
-		background-color: $primary-color-light
-		+box-shadow(0px 8px 16px 0px rgba(0,0,0,0.2))
-		z-index: 1
-		border-radius: 10px 10px 6px 6px
-
-		a
-			padding: 12px 16px
-			margin: 0
-			text-decoration: none
-			display: block
-			+text-escuro(18px)
-
-			&:hover
-				background-color: $primary-color
-				+text-claro(18px)
-				border-radius: 10px 10px 6px 6px
-
-	.perfil
-		width: 40px
-		height: 40px
+	
+	.loggout
 		float: right
-		margin: 10px 30px 10px 10px
-		background-image: url("../images/user.png")
-		background-size: 100% 100%
-		cursor: pointer
-
-	.perfil-single
-		background-color: $primary-color-light
-		+box-shadow(0px 8px 16px 0px rgba(0,0,0,0.2))
-		z-index: 1
-		border-radius: 10px 10px 6px 6px
-		position: absolute
-		top: 60px
-		right: 10px
-		display: none
-		text-align: center
 
 		a
-			+text-escuro(18px)
-			padding: 12px 16px
-			margin: 0
-			cursor: pointer
-			text-decoration: none
-			display: block
+			+text-claro(23px)
 
 			&:hover
-				background-color: $primary-color
-				+text-claro(18px)
-				border-radius: 10px 10px 6px 6px
+				text-decoration: none
+				color: $divider-color
+
+		a span
+			margin-left: 8px
+
+	.menu-btn
+		float: left
+		font-size: 23px
+		color: white
+
+		i
+			cursor: pointer
+
+		a
+			color: white
+
+
+.conteudo
+	width: calc(100% - 300px)
+	min-height: 100vh
+	position: relative
+	left: 300px
+	padding: 10px
+
 
 /** footer **/
 
 footer
-	width: 100%
+	width: calc(100% - 300px)
+	position: relative
+	left: 300px
+	bottom: 0 
 	height: auto
 	background-color: $primary-color-dark
 	border-top: 2px solid white
-	padding: 30px 2%
+	padding: 20px 2%
 	text-align: center
 
 	p
 		+text-claro(20px)
+
+/** home-painel **/
+
+.box-content
+	background-color: white
+	padding: 10px
+	margin-bottom: 20px
+	text-align: center
+
+	i
+		margin-right: 10px
+
+.box-metrica
+	margin-top: 20px 
+	width: 100%
+	display: flex
+	padding: 10px
+	text-align: center
+
+	h2
+		+text-claro(26px)
+
+	p
+		+text-claro(20px)
+
+	.box-metrica-single 
+		width: 30%
+		margin: 0 auto
+
+		&:nth-of-type(1)
+			background-color: #3949ab
+
+		&:nth-of-type(2)
+			background-color: #ef5350
+
+		&:nth-of-type(3)
+			background-color: #4caf50
+
+/** tabela responsiva **/
+
+.table-responsive
+	margin: 20px auto
+	max-width: 1280px
+	overflow-x: hidden
+
+	.row
+		+text-escuro(20px)
+		padding: 2px
+
+		&:nth-of-type(1)
+			font-weight: bold
+			+text-claro(20px)
+			border-bottom: 3px solid $divider-color
+			background-color: $primary-color-dark
+
+			
+	.col
+		float: left
+		width: 50%
+
 /** parametrizaca usuarios grupos **/
 
 section.cadastrar
@@ -190,7 +304,7 @@ section.cadastrar
 		margin: 20px 2%
 	
 		p
-			+text-escuro(24px)
+			+text-escuro2(24px)
 
 		.wraper-text
 			max-width: 800px
@@ -204,23 +318,18 @@ section.cadastrar
 
 		form
 			text-align: center
-			background-color: $primary-color-rgba
 			padding: 10px
+			border: 2px solid $divider-color
 
-			input[type="text"], input[type="password"], select
-				+input-norm1(100%)
-				max-width: 800px
-				margin-top: 10px
+	input[type="text"] , input[type="password"] , select , input[type="file"]
+		+input-norm1(100%)
+		max-width: 800px
+		margin-top: 10px
+		display: inline-block
 
-.wraper-btns
-	margin-top: 20px
 
-	input[type="submit"]:nth-of-type(1)
-		+input-norm2(200px)
-
-	input[type="submit"]:nth-of-type(2)
+	input[type="submit"]
 		+input-norm3(200px)
-		margin-left: 20px
 
 table
 	width: 100%
@@ -255,11 +364,41 @@ table
 
 /**media queryes**/
 
-@include phone-pq
-	section.login img
-		width: 200px
-
-@include phone
+@include tela-media
 	.left, .right
 		float: none
 		display: block
+
+@include phone
+
+	.conteudo
+		width: 100%
+		left: 0
+
+	.menu-aside
+		width: 0
+		display: none
+	
+	header
+		width: 100%
+		left: 0
+
+		img
+			display: none
+
+	footer
+		width: 100%
+		left: 0
+		+text-claro(12px)
+
+	.box-metrica
+		flex-direction: column
+
+		.box-metrica-single 
+			width: 100%
+			margin: 10px 0
+
+
+@include phone-pq
+	section.login img
+		width: 200px

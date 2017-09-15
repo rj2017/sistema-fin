@@ -50,7 +50,6 @@ if (isset($_GET['excluir'])) {
 					<th>Id</th>
 					<th>Nome</th>
 					<th>Ativo</th>
-					<th>Excluir</th>
 				</tr>
 				<div class="limpar">
 					<?php include("php/pesq_grupo.php"); ?>

@@ -1,4 +1,6 @@
-<?php include('config.php'); ?>
+<?php include('config.php'); 
+Painel::updateUsuarioOnline();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo INCLUDE_PATH;?>css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo INCLUDE_PATH;?>css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo INCLUDE_PATH;?>css/style.css">
 </head>
 <body>
@@ -17,17 +20,7 @@
 	<div class="conteudo">
 	<?php
 
-			$url = isset($_GET['url']) ? $_GET['url'] : 'home';
-
-			if(file_exists('pages/'.$url.'.php')){
-
-				include('pages/'.$url.'.php');
-
-			}else{
-				# podemos fazer o que quiser pois a pagina não existe
-				include('404.php');
-
-			}
+			Painel::loadPager();
 
 	?>
 	</div> 
