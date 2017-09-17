@@ -16,8 +16,9 @@
 			$_SESSION['login'] = true;
 			$_SESSION['user'] = $usuario;
 			$_SESSION['nome'] = $info['nome'];
+			$_SESSION['senha'] = $info['senha'];
 			$_SESSION['img'] = $info['img'];
-			$_SESSION['grupo'] = $info['id_grupo_usuario'];
+			$_SESSION['permissao'] = $info['permissao'];
 			header('location:'.INCLUDE_PATH);
 			die();
 		}else{

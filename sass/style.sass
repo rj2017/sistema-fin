@@ -152,6 +152,14 @@ section.login
 			p
 				margin-top: 2px
 
+				a
+					+text-accent(16px)
+
+					&:hover
+						text-decoration: none
+	
+
+
 	.item-menu
 		width: 100%
 		margin-top: 20px
@@ -172,6 +180,8 @@ section.login
 				text-decoration: none
 				background-color: $divider-color
 				+text-escuro(18px)
+
+
 
 header
 	width: calc(100% - 300px)
@@ -244,8 +254,44 @@ footer
 	margin-bottom: 20px
 	text-align: center
 
+	h2
+		+text-escuro2(25px)
+		margin: 10px 0
+
 	i
 		margin-right: 10px
+
+	.wraper-form
+		margin: 20px 2%
+
+		.wraper-text
+			max-width: 800px
+			margin: 10px auto
+
+
+		label
+			+text-escuro(18px)
+			display: block
+			text-align: left
+
+		form
+			text-align: center
+			padding: 10px
+			border: 2px solid $divider-color
+
+		input[type="text"] , input[type="password"] , select , input[type="file"]
+			+input-norm1(100%)
+			max-width: 800px
+			margin-top: 10px
+			display: inline-block
+
+
+		input[type="submit"]
+			+input-norm3(200px)
+
+/** formulários **/
+
+
 
 .box-metrica
 	margin-top: 20px 
@@ -272,6 +318,28 @@ footer
 
 		&:nth-of-type(3)
 			background-color: #4caf50
+
+/** alertas **/
+
+.box-alerta
+	width: 100%
+	height: 40px
+
+.sucesso
+	background-color: $text-sucess
+	padding: 5px
+	+text-claro(18px)
+
+	i
+		margin-right: 5px
+
+.erro
+	background-color: $text-atention
+	padding: 5px
+	+text-claro(18px)
+
+	i
+		margin-right: 5px
 
 /** tabela responsiva **/
 
@@ -300,36 +368,6 @@ footer
 section.cadastrar
 	width: 100%
 
-	.wraper-form
-		margin: 20px 2%
-	
-		p
-			+text-escuro2(24px)
-
-		.wraper-text
-			max-width: 800px
-			margin: 10px auto
-
-
-		label
-			+text-escuro(18px)
-			display: block
-			text-align: left
-
-		form
-			text-align: center
-			padding: 10px
-			border: 2px solid $divider-color
-
-	input[type="text"] , input[type="password"] , select , input[type="file"]
-		+input-norm1(100%)
-		max-width: 800px
-		margin-top: 10px
-		display: inline-block
-
-
-	input[type="submit"]
-		+input-norm3(200px)
 
 table
 	width: 100%
@@ -352,15 +390,12 @@ table
 		display: inline-block
 		cursor: pointer
 
-/** Cad grupo usuario **/
 
-.retorno
-	width: 100%
-	
-	.wraper-retorno
-		margin: 20px 2%
+.menu-active
+	background-color: #3d3d3d
 
-
+	&::before
+		content: '> '
 
 /**media queryes**/
 

@@ -81,5 +81,82 @@
 
 			return $sql->fetchAll();
 		}
+
+		public static function alerta($tipo,$menssagem){
+			if ($tipo == 'sucesso') {
+				echo '<div class="box-alerta sucesso"><i class="fa fa-check"></i>'.$menssagem.'</div>';
+			}elseif ($tipo == 'erro') {
+				echo "<div class='box-alerta erro'><i class='fa fa-times'></i>$menssagem</div>";
+			}
+
+		}
+
+		public static function imagemValida($img){
+
+			if ($img['type'] == 'image/jpeg' ||
+			 $img['type'] == 'image/jpg' || 
+			 $img['type'] == 'image/png'){
+					
+					//pegar o tamanho em kabytes
+					$tamanho = intval($img['size'] / 1024);
+					//verificando se a imagem e maior do que 300kb para não sobrecarregar o servidor
+					if ($tamanho < 300) {
+						return true;
+					}else{
+						return false;
+					}
+
+				
+				}else{
+					return false;
+				}
+		}
+
+		public static function uploadFile($file){
+			//função nativa do PHP que transefere o arquivo
+			if (move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$file['name'])) {
+				$_SESSION['img'] = $file['name'];
+				return $file['name'];
+			}else{
+				return false;
+			}
+		}
+
+		public static function deleteFile($file){
+
+			@unlink('uploads/'.$file);
+		}
+
+		public static function selecionadoMenu($par){
+		$url = explode('/', @$_GET['url'])[0];
+
+		if ($url == $par) 
+			echo 'class = "menu-active" ';
+
+			// <i class="fa fa-angle-double-right"></i>
+		}
+
+		public static function verificarPermissaoMenu($permissao){
+			if($_SESSION['permissao'] >= $permissao) {
+				
+				return;
+			}else{
+
+				echo 'style="display: none"';
+			}
+		}
+
+		public static function verificarPermissaoPagina($permissao){
+			if(@$_SESSION['permissao'] >= $permissao) {
+				
+				return;
+			}else{
+
+				include("pagina-proibida.php");
+				die();
+			}
+		}
+
+
 	}
 ?>

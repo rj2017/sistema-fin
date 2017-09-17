@@ -1,4 +1,5 @@
 <?php
+	Painel::verificarPermissaoPagina(2);
 	$usuarios_onlines = Painel::listarUsuariosOnline();
 	$usuarios_ativos = Painel::countUsariosAtivos();
 ?>

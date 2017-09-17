@@ -9,13 +9,18 @@
 
 	spl_autoload_register($autoload);
 
-	@define('INCLUDE_PATH','http://127.0.0.1/projects/sistema_fin/');
+	@define('INCLUDE_PATH','http://127.0.0.1/projects/sistema-fin/');
+	@define('BASE_DIR_PAINEL',__DIR__);
 	
 	//Conectar ao banco de dados
 	@define('HOST', 'localhost');
 	@define('DB', 'sistema_financeiro');
 	@define('USER', 'root');
 	@define('PASS', '');
+
+	//funções do painel
+
+	
 
 
 ?>

@@ -1,3 +1,6 @@
+<?php
+Painel::verificarPermissaoPagina(1);
+?>
 <footer>
 		<div class="left"><p>Todos os direitos reservados</p></div>
 		<div class="right"><p>contato@dev3tech.com.br</p></div>

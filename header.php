@@ -1,8 +1,10 @@
-<?php include("config.php");
+<?php 
+include("config.php");
 
 if (isset($_GET['loggout'])) {
 	Painel::loggout();
 }
+Painel::verificarPermissaoPagina(1);
 
 ?>
 
@@ -25,17 +27,19 @@ if (isset($_GET['loggout'])) {
 				
 				<div class="nome-usuario">
 					<p><?php echo $_SESSION['nome'];?></p>
+					<P><a href="<?php echo INCLUDE_PATH;?>edit_perfil"><i class="fa fa-user" style="margin-right: 4px;" ></i>Perfil</a></P>
 				</div><!-- nome-usuario -->
 			</div><!-- box-usuario -->
 			
 			<div class="item-menu">
-				<h2>Administração</h2>
-				<a href="home">Dashboard</a>
-				<a href="cad_usuarios">Cadastrar usuário</a>
-				<a href="">Editar usuário</a>
-				<h2>Financeiro</h2>
-				<a href="">Entradas</a>
-				<a href="">Saídas</a>
+				<h2 <?php echo Painel::verificarPermissaoMenu(2); ?> >Administração</h2>
+
+				<a <?php echo Painel::selecionadoMenu('home'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>home">Dashboard</a>
+				<a <?php echo Painel::selecionadoMenu('cad_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>cad_usuarios">Cadastrar usuários</a>
+				<a <?php echo Painel::selecionadoMenu('editar_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="#">Editar usuários</a>
+				<h2 <?php echo Painel::verificarPermissaoMenu(1); ?> >Financeiro</h2>
+				<a <?php echo Painel::selecionadoMenu('entrada'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Entradas</a>
+				<a <?php echo Painel::selecionadoMenu('saida'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Saídas</a>
 			</div><!-- item-menu -->
 
 		</div><!-- menu-aside-wrapper -->
