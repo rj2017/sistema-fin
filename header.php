@@ -34,12 +34,15 @@ Painel::verificarPermissaoPagina(1);
 			<div class="item-menu">
 				<h2 <?php echo Painel::verificarPermissaoMenu(2); ?> >Administração</h2>
 
-				<a <?php echo Painel::selecionadoMenu('home'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>home">Dashboard</a>
+				<a <?php echo Painel::selecionadoMenu('dashboard_admin'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>dashboard_admin">Dashboard</a>
 				<a <?php echo Painel::selecionadoMenu('cad_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>cad_usuarios">Cadastrar usuários</a>
-				<a <?php echo Painel::selecionadoMenu('editar_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="#">Editar usuários</a>
+				<a <?php echo Painel::selecionadoMenu('editar_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="editar_usuarios">Editar usuários</a>
 				<h2 <?php echo Painel::verificarPermissaoMenu(1); ?> >Financeiro</h2>
+				<a <?php echo Painel::selecionadoMenu('dashboard_cliente'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Dashboard</a>
 				<a <?php echo Painel::selecionadoMenu('entrada'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Entradas</a>
 				<a <?php echo Painel::selecionadoMenu('saida'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Saídas</a>
+				<a <?php echo Painel::selecionadoMenu('relatorios'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Relatórios</a>
+				<a <?php echo Painel::selecionadoMenu('parametros'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Parâmetrização</a>
 			</div><!-- item-menu -->
 
 		</div><!-- menu-aside-wrapper -->
@@ -52,7 +55,7 @@ Painel::verificarPermissaoPagina(1);
 					<i class="fa fa-bars"></i>
 				</div>
 					
-				<img src="<?php echo INCLUDE_PATH;?>images/logo2.png">
+				<a href="home"><img src="<?php echo INCLUDE_PATH;?>images/logo2.png"></a>
 					
 				<div class="loggout">
 						<a href="<?php echo INCLUDE_PATH;?>?loggout"> <i class="fa fa-window-close"></i><span>Sair</span></a>
@@ -61,5 +64,3 @@ Painel::verificarPermissaoPagina(1);
 		</nav><!-- menu -->
 </header>
 <div class="clear"></div>
-<script src="<?php echo INCLUDE_PATH;?>js/jquery.js"></script>
-<script src="<?php echo INCLUDE_PATH;?>js/home.js"></script>

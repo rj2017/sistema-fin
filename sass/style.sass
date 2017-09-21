@@ -93,6 +93,14 @@ section.login
 		top: 20px
 		left: 20px
 
+.form-group-login
+	margin: 10px 2%
+	text-align: right
+	+text-escuro2(18px)
+
+	span
+		padding-right: 10px
+
 .erro-box
 	width: 100%
 	background-color: $text-atention
@@ -246,7 +254,7 @@ footer
 	p
 		+text-claro(20px)
 
-/** home-painel **/
+/** deshboard-painel **/
 
 .box-content
 	background-color: white
@@ -289,6 +297,18 @@ footer
 		input[type="submit"]
 			+input-norm3(200px)
 
+/* home - page */
+
+.apresentacao
+	h2
+		+text-escuro2(24px)
+		margin: 20px 0
+
+	p
+		+text-escuro(20px)
+	
+	i
+		+text-accent(20px)
 /** formulários **/
 
 
@@ -361,35 +381,54 @@ footer
 			
 	.col
 		float: left
-		width: 50%
+		width: 33%
 
 /** parametrizaca usuarios grupos **/
 
 section.cadastrar
 	width: 100%
 
+.wraper-table
+	overflow-x: auto
 
 table
 	width: 100%
+	margin: 20px auto
+	max-width: 1280px
 
 	th
-		background-color: $primary-color-rgba
-		padding: 5px
-		+text-escuro(20px)
+		font-weight: bold
+		+text-claro(20px)
+		border-bottom: 3px solid $divider-color
+		background-color: $primary-color-dark
 		text-align: center
-		border: 3px solid $divider-color
 
 	td
-		padding: 5px
-		+text-escuro(18px)
-		text-align: center
-		border: 3px solid $divider-color
+		+text-escuro(20px)
+		padding: 2px
+		border-bottom: 1px solid $divider-color
 
-	i
-		color: $text-atention
-		display: inline-block
+	a i
 		cursor: pointer
+		text-align: center
 
+	.fa-pencil
+		color: $accent-color !important
+
+	.fa-times
+		color: $text-atention !important
+
+.paginacao a
+	padding: 5px
+	border: 2px solid $divider-color
+	margin: 0 5px
+	font-size: 20px
+
+	&:hover
+		text-decoration: none
+
+.pagina-active
+	background-color: $divider-color
 
 .menu-active
 	background-color: #3d3d3d
@@ -397,12 +436,54 @@ table
 	&::before
 		content: '> '
 
+
+/*editar usuários */
+
+.pesquisar-usuario
+	display: none
+
+.btn-pesq
+	float: right
+	font-size: 26px
+	padding-right: 20px
+	cursor: pointer
+	color: $primary-color-dark
+
+	&:hover
+		color: $primary-color
+
+
+.fa-arrow-circle-left
+	padding-left: 30px
+	font-size: 30px
+	color: $primary-color-dark
+
+	&:hover
+		color: $primary-color
+
 /**media queryes**/
 
 @include tela-media
 	.left, .right
 		float: none
 		display: block
+
+	table
+		min-width: 800px
+
+	table tr th, table tr td
+		font-size: 16px !important
+
+	.box-content h2
+		font-size: 18px
+
+	.wraper-form input[type='text'], .wraper-form select
+		font-size: 16px !important
+		height: 36px !important
+
+		label
+			font-size: 14px !important
+
 
 @include phone
 

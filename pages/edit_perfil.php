@@ -8,54 +8,7 @@ Painel::verificarPermissaoPagina(1);
 	<div class="wraper-form">
 		<form method="post" enctype="multipart/form-data">
 			<?php
-				if (isset($_POST['acao'])) {
-					
-
-					$usuario = new Usuario();
-
-					$nome = $_POST['nome'];
-					$senha = $_POST['senha'];
-					$img = $_FILES['imagem'];
-					$img_atual = $_POST['imagem_atual'];
-
-					if ($img['name'] != '') {
-						//existe upload de imagem
-						
-						if (Painel::imagemValida($img)) {
-
-							Painel::deleteFile($img_atual);
-							$img = Painel::uploadFile($img);
-
-
-								if ($usuario->atualizarUsuarioPerfil($nome,$senha,$img)) {
-								//se a atualização der certo
-
-								Painel::alerta('sucesso','Atualizado com sucesso!');
-								
-								}else{
-									//se a atualização não der certo
-									Painel::alerta('erro','Ocorreu um erro ao atualizar!');
-								}
-
-						}else{
-							Painel::alerta('erro','O formato da imagem não é valido!');
-						}
-
-					}else{
-						//não existeupload de imagem
-
-						$img = $img_atual;
-						if ($usuario->atualizarUsuarioPerfil($nome,$senha,$img)) {
-							//se a atualização der certo
-
-							Painel::alerta('sucesso','Atualizado com sucesso!');
-							
-						}else{
-							//se a atualização não der certo
-							Painel::alerta('erro','Ocorreu um erro ao atualizar!');
-						}
-					}
-				}
+				Usuario::editarPerfil();
 			?>
 
 			<input type="text" name="nome" placeholder="Nome Completo" value="<?php echo $_SESSION['nome'];?>" required />

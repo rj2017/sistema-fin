@@ -1,28 +1,31 @@
 <?php
 Painel::verificarPermissaoPagina(2);
-$pdo = MySql::conectarDb();
-include('php/cad_user.php');
+
 ?>
 	<div class="box-content">
 		<h2><i class="fa fa-user-plus"></i>Cadastro de usuários</h2>
 
 		<section class="cadastrar">
-				<div class="wraper-form">
-					<form method="post">
+					<?php
+						Usuario::cadastrarUsuario();
 						
-						<input type="text" name="usuario" placeholder="usuário"  />
+					?>
+				<div class="wraper-form">
+					
+					<form method="post" enctype="multipart/form-data">
+						
+						<input type="text" name="usuario" placeholder="Usuário"  />
 						<input type="text" name="nome" placeholder="Nome Completo"  />
-						<input type="password" name="senha" placeholder="senha" />
-						<input type="password" name="senha2" placeholder="confirme a senha" />
+						<input type="password" name="senha" placeholder="Senha" />
 						
 						<div class="wraper-text">
-							<label>Enviar imagem</label>
-							<input type="file" name="img" />
+							<label>Foto</label>
+							<input type="file" name="imagem"/>
 						</div>
 
 						<div class="wraper-text">
 							<label>Permissao</label>
-							<select name="ativo" required >
+							<select name="permissao" required >
 								<option value="1">Comun</option>
 								<option value="2">Administrador</option>
 							</select>

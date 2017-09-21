@@ -1,4 +1,5 @@
 $(function(){
+	
 	var open = true;
 	var windowSize = $(window)[0].innerWidth;
 	$(window).resize(function() {

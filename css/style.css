@@ -109,6 +109,14 @@ section.login {
     top: 20px;
     left: 20px; }
 
+.form-group-login {
+  margin: 10px 2%;
+  text-align: right;
+  font-size: 18px;
+  color: #212121; }
+  .form-group-login span {
+    padding-right: 10px; }
+
 .erro-box {
   width: 100%;
   background-color: #D32F2F;
@@ -241,7 +249,7 @@ footer {
     font-size: 20px;
     color: #FFFFFF; }
 
-/** home-painel */
+/** deshboard-painel */
 .box-content {
   background-color: white;
   padding: 10px;
@@ -290,6 +298,18 @@ footer {
       .box-content .wraper-form input[type="submit"]:hover {
         background-color: #00BCD4;
         border-radius: 8px; }
+
+/* home - page */
+.apresentacao h2 {
+  font-size: 24px;
+  color: #212121;
+  margin: 20px 0; }
+.apresentacao p {
+  font-size: 20px;
+  color: #757575; }
+.apresentacao i {
+  font-size: 20px;
+  color: #FFC107; }
 
 /** formul├írios */
 .box-metrica {
@@ -352,42 +372,95 @@ footer {
       background-color: #0097A7; }
   .table-responsive .col {
     float: left;
-    width: 50%; }
+    width: 33%; }
 
 /** parametrizaca usuarios grupos */
 section.cadastrar {
   width: 100%; }
 
+.wraper-table {
+  overflow-x: auto; }
+
 table {
-  width: 100%; }
+  width: 100%;
+  margin: 20px auto;
+  max-width: 1280px; }
   table th {
-    background-color: rgba(0, 188, 212, 0.2);
-    padding: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    border-bottom: 3px solid #dfdfdf;
+    background-color: #0097A7;
+    text-align: center; }
+  table td {
     font-size: 20px;
     color: #757575;
-    text-align: center;
-    border: 3px solid #dfdfdf; }
-  table td {
-    padding: 5px;
-    font-size: 18px;
-    color: #757575;
-    text-align: center;
-    border: 3px solid #dfdfdf; }
-  table i {
-    color: #D32F2F;
-    display: inline-block;
-    cursor: pointer; }
+    padding: 2px;
+    border-bottom: 1px solid #dfdfdf; }
+  table a i {
+    cursor: pointer;
+    text-align: center; }
+  table .fa-pencil {
+    color: #FFC107 !important; }
+  table .fa-times {
+    color: #D32F2F !important; }
+
+.paginacao a {
+  padding: 5px;
+  border: 2px solid #dfdfdf;
+  margin: 0 5px;
+  font-size: 20px; }
+  .paginacao a:hover {
+    text-decoration: none; }
+
+.pagina-active {
+  background-color: #dfdfdf; }
 
 .menu-active {
   background-color: #3d3d3d; }
   .menu-active::before {
     content: "> "; }
 
+/*editar usu├írios */
+.pesquisar-usuario {
+  display: none; }
+
+.btn-pesq {
+  float: right;
+  font-size: 26px;
+  padding-right: 20px;
+  cursor: pointer;
+  color: #0097A7; }
+  .btn-pesq:hover {
+    color: #00BCD4; }
+
+.fa-arrow-circle-left {
+  padding-left: 30px;
+  font-size: 30px;
+  color: #0097A7; }
+  .fa-arrow-circle-left:hover {
+    color: #00BCD4; }
+
 /**media queryes* */
 @media only screen and (max-width: 900px) {
   .left, .right {
     float: none;
-    display: block; } }
+    display: block; }
+
+  table {
+    min-width: 800px; }
+
+  table tr th, table tr td {
+    font-size: 16px !important; }
+
+  .box-content h2 {
+    font-size: 18px; }
+
+  .wraper-form input[type='text'], .wraper-form select {
+    font-size: 16px !important;
+    height: 36px !important; }
+    .wraper-form input[type='text'] label, .wraper-form select label {
+      font-size: 14px !important; } }
 @media only screen and (max-width: 768px) {
   .conteudo {
     width: 100%;

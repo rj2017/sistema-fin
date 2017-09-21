@@ -1,6 +1,6 @@
 <?php 
 include('config.php'); 
-Painel::updateUsuarioOnline();
+Usuario::updateUsuarioOnline();
 
 Painel::verificarPermissaoPagina(1);
 ?>

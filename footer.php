@@ -6,6 +6,7 @@ Painel::verificarPermissaoPagina(1);
 		<div class="right"><p>contato@dev3tech.com.br</p></div>
 		<div class="clear"></div>
 </footer>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.js" ></script>
-<script src="js/functions.js"></script>
+<script src="<?php echo INCLUDE_PATH;?>js/jquery.js"></script>
+<script src="<?php echo INCLUDE_PATH;?>js/bootstrap.js" ></script>
+<script src="<?php echo INCLUDE_PATH;?>js/home.js"></script>
+<script src="<?php echo INCLUDE_PATH;?>js/functions.js"></script>
