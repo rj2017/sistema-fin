@@ -1,5 +1,9 @@
 <?php
 
+/*a fazer
+configurar o usuário ao PDV
+colocar o id do Pdv do usuário na sessao
+*/
 	@session_start();
 	date_default_timezone_set('America/Sao_Paulo');
 

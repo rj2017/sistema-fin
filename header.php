@@ -36,11 +36,13 @@ Painel::verificarPermissaoPagina(1);
 
 				<a <?php echo Painel::selecionadoMenu('dashboard_admin'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>dashboard_admin">Dashboard</a>
 				<a <?php echo Painel::selecionadoMenu('cad_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>cad_usuarios">Cadastrar usuários</a>
-				<a <?php echo Painel::selecionadoMenu('editar_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="editar_usuarios">Editar usuários</a>
+				<a <?php echo Painel::selecionadoMenu('editar_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>editar_usuarios">Editar usuários</a>
+				<a <?php echo Painel::selecionadoMenu('cad_pdv'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>cad_pdv">Cadastrar PDVs</a>
+				<a <?php echo Painel::selecionadoMenu('editar_pdv'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>editar_pdv">Editar PDVs</a>
 				<h2 <?php echo Painel::verificarPermissaoMenu(1); ?> >Financeiro</h2>
 				<a <?php echo Painel::selecionadoMenu('dashboard_cliente'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Dashboard</a>
-				<a <?php echo Painel::selecionadoMenu('entrada'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Entradas</a>
-				<a <?php echo Painel::selecionadoMenu('saida'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Saídas</a>
+				<a <?php echo Painel::selecionadoMenu('fin_entrada'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_entrada">Entradas</a>
+				<a <?php echo Painel::selecionadoMenu('fin_saida'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_saida">Saídas</a>
 				<a <?php echo Painel::selecionadoMenu('relatorios'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Relatórios</a>
 				<a <?php echo Painel::selecionadoMenu('parametros'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Parâmetrização</a>
 			</div><!-- item-menu -->

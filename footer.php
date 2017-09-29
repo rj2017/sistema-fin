@@ -8,5 +8,6 @@ Painel::verificarPermissaoPagina(1);
 </footer>
 <script src="<?php echo INCLUDE_PATH;?>js/jquery.js"></script>
 <script src="<?php echo INCLUDE_PATH;?>js/bootstrap.js" ></script>
+<script src="<?php echo INCLUDE_PATH;?>js/jquery.mask.js"></script>
 <script src="<?php echo INCLUDE_PATH;?>js/home.js"></script>
 <script src="<?php echo INCLUDE_PATH;?>js/functions.js"></script>

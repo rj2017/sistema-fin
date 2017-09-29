@@ -18,7 +18,7 @@ Painel::verificarPermissaoPagina(2);
 		<section class="cadastrar">
 					<?php
 						if (isset($_POST['atualizar'])) {
-							if (Usuario::updateUsuario($_POST)) {
+							if (Usuario::updateItem($_POST)) {
 								Painel::alerta('sucesso','Usuário atualizado com sucesso!');
 								$usuario = Painel::select('tb_admin.usuario', 'id = ?', array($id));
 							}else{

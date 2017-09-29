@@ -79,14 +79,14 @@ class Usuario{
 				$confirmar->execute(array($_SESSION['online']));
 
 					if ($confirmar->rowCount() == 1) {
-						$sql = Mysql::conectarDb()->prepare("UPDATE `tb_admin.online` SET `ultima_acao` = ? WHERE token = ? ");
+						$sql = MySql::conectarDb()->prepare("UPDATE `tb_admin.online` SET `ultima_acao` = ? WHERE token = ? ");
 						$sql->execute(array($horario_atual, $token));
 					}else{
 
 						$usuario = $_SESSION['user'];
 						$ip = $_SERVER['REMOTE_ADDR'];
 						$_SESSION['online'] = uniqid();
-						$sql = Mysql::conectarDb()->prepare("INSERT INTO `tb_admin.online` VALUES (null,?,?,?,?)");
+						$sql = MySql::conectarDb()->prepare("INSERT INTO `tb_admin.online` VALUES (null,?,?,?,?)");
 						$sql->execute(array($usuario, $ip , $horario_atual, $token));
 
 					}
@@ -98,7 +98,7 @@ class Usuario{
 				$usuario = $_SESSION['user'];
 				$_SESSION['online'] = uniqid();
 				$token = $_SESSION['online'];
-				$sql = Mysql::conectarDb()->prepare("INSERT INTO `tb_admin.online` VALUES (null,?,?,?,?)");
+				$sql = MySql::conectarDb()->prepare("INSERT INTO `tb_admin.online` VALUES (null,?,?,?,?)");
 				$sql->execute(array($usuario, $ip , $horario_atual, $token));
 			}
 		}
@@ -177,9 +177,35 @@ class Usuario{
 
 		}
 
+		public static function cadastrarPdv(){
+			if (isset($_POST['cadastrar'])) {
+
+
+					$nome = $_POST['nome'];
+					$ativo = $_POST['ativo'];
+
+					if ($nome == '') {
+						Painel::alerta('erro','O campo Usuário está vazio!');
+					}else{
+							//podemos cadastrar
+
+							$sql = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.pdv` VALUES (null, ?,?)");
+							$sql->execute(array($nome,$ativo));
+
+							Painel::alerta('sucesso', 'Usuário cadastrado com sucesso!');
+							@Painel::redirect(INCLUDE_PATH.'cad_pdv');
+
+					}
+
+			}
+
+
+		}
+
+
 		public static function userExist($usuario){
 
-			$sql = Mysql::conectarDb()->prepare('SELECT `id` FROM `tb_admin.usuario` WHERE `usuario` = ?');
+			$sql = MySql::conectarDb()->prepare('SELECT `id` FROM `tb_admin.usuario` WHERE `usuario` = ?');
 			$sql->execute(array($usuario));
 
 			if ($sql->rowCount() == 1) {
@@ -216,13 +242,13 @@ class Usuario{
 					if ($usuario == '') {
 
 						if ($permissao == '0') {
-								$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `ativo` = ?");
+								$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `ativo` = ?");
 								$sql->execute(array($ativo));
 
 								return $sql->fetchAll();
 						}else{
 
-						$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `permissao` = ? AND  `ativo` = ?");
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `permissao` = ? AND  `ativo` = ?");
 						$sql->execute(array($permissao,$ativo));
 
 						return $sql->fetchAll();
@@ -232,12 +258,12 @@ class Usuario{
 					}elseif ($usuario != '') {
 
 						if ($permissao == 0) {
-								$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `usuario` = ? AND `ativo` = ?");
+								$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `usuario` = ? AND `ativo` = ?");
 								$sql->execute(array($usuario,$ativo));
 
 								return $sql->fetchAll();
 						}else{
-						$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `usuario` = ? AND `ativo` = ? AND `permissao` = ?");
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `usuario` = ? AND `ativo` = ? AND `permissao` = ?");
 						$sql->execute(array($usuario, $ativo , $permissao));
 
 						return $sql->fetchAll();
@@ -256,13 +282,13 @@ class Usuario{
 					if ($usuario == '') {
 
 						if ($permissao == 0) {
-								$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `ativo` = ? LIMIT $start,$end");
+								$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `ativo` = ? LIMIT $start,$end");
 								$sql->execute(array($ativo));
 
 								return $sql->fetchAll();
 						}else{
 
-						$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `permissao` = ? AND  `ativo` = ? LIMIT $start,$end");
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `permissao` = ? AND  `ativo` = ? LIMIT $start,$end");
 						$sql->execute(array($permissao,$ativo));
 
 						return $sql->fetchAll();
@@ -272,12 +298,12 @@ class Usuario{
 					}elseif ($usuario != '') {
 
 						if ($permissao == '0') {
-								$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE  `usuario` = ? AND `ativo` = ? LIMIT $start,$end");
+								$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE  `usuario` = ? AND `ativo` = ? LIMIT $start,$end");
 								$sql->execute(array($usuario, $ativo));
 
 								return $sql->fetchAll();
 						}else{
-						$sql= Mysql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `usuario` = ? AND `ativo` = ? AND `permissao` = ? LIMIT $start,$end");
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `usuario` = ? AND `ativo` = ? AND `permissao` = ? LIMIT $start,$end");
 						$sql->execute(array($usuario, $ativo , $permissao));
 
 						return $sql->fetchAll();
@@ -289,7 +315,60 @@ class Usuario{
 			}
 		}
 
-		public static function updateUsuario($arr){
+		public static function pesquisarPdv($start = null, $end = null){
+
+			if ($start == null && $end == null){
+				if (isset($_POST['pesquisar'])) {
+					
+					$nome = $_POST['nome'];
+					$ativo = $_POST['ativo'];
+
+					if ($nome == '') {
+
+
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.pdv` WHERE `ativo` = ?");
+						$sql->execute(array($ativo));
+
+						return $sql->fetchAll();	
+
+					}elseif ($nome != '') {
+
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.pdv` WHERE `nome` = ? AND `ativo` = ?");
+						$sql->execute(array($nome, $ativo));
+
+						return $sql->fetchAll();
+						
+					}
+
+				}
+			}else{
+				if (isset($_POST['pesquisar'])) {
+					
+					$nome = $_POST['nome'];
+					$ativo = $_POST['ativo'];
+
+					if ($nome == '') {
+
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.pdv` WHERE `ativo` = ? LIMIT $start,$end");
+						$sql->execute(array($ativo));
+
+						return $sql->fetchAll();
+
+					}elseif ($nome != '') {
+
+						$sql= MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.pdv` WHERE `nome` = ? AND `ativo` = ? LIMIT $start,$end");
+						$sql->execute(array($usuario, $ativo));
+
+						return $sql->fetchAll();
+						
+						
+					}
+
+				}
+			}
+		}
+
+		public static function updateItem($arr){
 
 			$certo = true;
 			$first = false;
