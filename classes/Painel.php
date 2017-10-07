@@ -13,7 +13,7 @@
 			$usuario = $_POST['login'];
 			$senha = $_POST['senha'];
 
-			$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` WHERE `usuario` = ? and `senha` = ? and `ativo` = '1'");
+			$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` as a INNER JOIN `tb_fin.usuario-pdv` as b ON a.id = b.usuario WHERE a.usuario = ? and a.senha = ? and a.ativo = '1'");
 
 			$sql->execute(array($usuario,$senha));
 
@@ -22,11 +22,13 @@
 				$info = $sql->Fetch();
 
 				$_SESSION['login'] = true;
+				$_SESSION['id'] = $info['id'];
 				$_SESSION['user'] = $usuario;
 				$_SESSION['nome'] = $info['nome'];
 				$_SESSION['senha'] = $info['senha'];
 				$_SESSION['img'] = $info['img'];
 				$_SESSION['permissao'] = $info['permissao'];
+				$_SESSION['pdv'] = $info['pdv'];
 
 				if (isset($_POST['lembrar'])) {
 					setcookie('lembrar',true, time()+(60*60*24));

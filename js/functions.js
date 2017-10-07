@@ -38,6 +38,6 @@ $(function(){
 		$('#phone_us').mask('(000) 000-0000');
 		$('#mixed').mask('AAA 000-S0S');
 		$('#cpf').mask('000.000.000-00', {reverse: true});
-		$('#money').mask('000.000.000.000.000,00', {reverse: true});
+		$('#money').mask('000000000.00', {reverse: true});
 
 });

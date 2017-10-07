@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Set-2017 às 00:26
+-- Generation Time: 07-Out-2017 às 15:15
 -- Versão do servidor: 5.6.15-log
 -- PHP Version: 5.4.24
 
@@ -33,16 +33,14 @@ CREATE TABLE IF NOT EXISTS `tb_admin.online` (
   `ultima_acao` datetime NOT NULL,
   `token` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Extraindo dados da tabela `tb_admin.online`
 --
 
 INSERT INTO `tb_admin.online` (`id`, `usuario`, `ip`, `ultima_acao`, `token`) VALUES
-(28, 'comun', '127.0.0.1', '2017-09-29 18:31:24', '59ceb9b2f29c3'),
-(29, 'admin', '127.0.0.1', '2017-09-29 19:22:39', '59cebbb237a9a'),
-(27, 'admin', '127.0.0.1', '2017-09-29 18:22:51', '59ce91fd58f08');
+(36, 'admin', '127.0.0.1', '2017-10-05 21:36:46', '59d67d87ba23c');
 
 -- --------------------------------------------------------
 
@@ -80,9 +78,20 @@ CREATE TABLE IF NOT EXISTS `tb_fin.entradas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) NOT NULL,
   `data` date NOT NULL,
+  `valor` float NOT NULL,
   `pdv` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Extraindo dados da tabela `tb_fin.entradas`
+--
+
+INSERT INTO `tb_fin.entradas` (`id`, `descricao`, `data`, `valor`, `pdv`, `usuario`) VALUES
+(9, 'doces', '2017-10-04', 55.65, 1, 1),
+(8, 'jornal', '2017-10-04', 35.41, 1, 1),
+(7, 'revista', '2017-10-04', 64.85, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -95,14 +104,38 @@ CREATE TABLE IF NOT EXISTS `tb_fin.pdv` (
   `nome` varchar(255) NOT NULL,
   `ativo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `tb_fin.pdv`
 --
 
 INSERT INTO `tb_fin.pdv` (`id`, `nome`, `ativo`) VALUES
-(1, 'Teste', 1);
+(1, 'Banca do seu zé', 1),
+(2, 'Biscoitaria Biscoito', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_fin.saidas`
+--
+
+CREATE TABLE IF NOT EXISTS `tb_fin.saidas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(255) NOT NULL,
+  `data` date NOT NULL,
+  `valor` float NOT NULL,
+  `pdv` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `tb_fin.saidas`
+--
+
+INSERT INTO `tb_fin.saidas` (`id`, `descricao`, `data`, `valor`, `pdv`, `usuario`) VALUES
+(2, 'luz', '2017-10-04', 75.98, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -115,6 +148,14 @@ CREATE TABLE IF NOT EXISTS `tb_fin.usuario-pdv` (
   `pdv` int(11) NOT NULL,
   `ativo` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_fin.usuario-pdv`
+--
+
+INSERT INTO `tb_fin.usuario-pdv` (`usuario`, `pdv`, `ativo`) VALUES
+(1, 1, 1),
+(5, 1, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -39,8 +39,9 @@ Painel::verificarPermissaoPagina(1);
 				<a <?php echo Painel::selecionadoMenu('editar_usuarios'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>editar_usuarios">Editar usuários</a>
 				<a <?php echo Painel::selecionadoMenu('cad_pdv'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>cad_pdv">Cadastrar PDVs</a>
 				<a <?php echo Painel::selecionadoMenu('editar_pdv'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>editar_pdv">Editar PDVs</a>
+				<a <?php echo Painel::selecionadoMenu('pdv_usuario'); ?><?php echo Painel::verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH;?>pdv_usuario">Pdv x Usuário</a>
 				<h2 <?php echo Painel::verificarPermissaoMenu(1); ?> >Financeiro</h2>
-				<a <?php echo Painel::selecionadoMenu('dashboard_cliente'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Dashboard</a>
+				<a <?php echo Painel::selecionadoMenu('fin_dashboard'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_dashboard">Dashboard</a>
 				<a <?php echo Painel::selecionadoMenu('fin_entrada'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_entrada">Entradas</a>
 				<a <?php echo Painel::selecionadoMenu('fin_saida'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_saida">Saídas</a>
 				<a <?php echo Painel::selecionadoMenu('relatorios'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Relatórios</a>

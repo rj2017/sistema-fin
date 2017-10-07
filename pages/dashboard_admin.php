@@ -2,6 +2,7 @@
 	Painel::verificarPermissaoPagina(2);
 	$usuarios_onlines = Usuario::listarUsuariosOnline();
 	$usuarios_ativos = Usuario::countUsariosAtivos();
+	$pdvs = Usuario::countPdvs();
 ?>
 <div class="box-content w100">
 	<h2><i class="fa fa-home"></i>Dashboard - Painel Administrador</h2>
@@ -21,7 +22,9 @@
 
 		<div class="box-metrica-single">
 			<h2>Comércios ativos</h2>
-			<p>0</p>
+			<p><?php
+				echo count($pdvs);
+			?></p>
 		</div><!-- box-metrica-single -->
 	</div><!-- box-metrica -->
 

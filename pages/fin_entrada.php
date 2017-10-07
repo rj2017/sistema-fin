@@ -7,8 +7,8 @@ Painel::verificarPermissaoPagina(1);
 
 		<section class="cadastrar">
 					<?php
-						
-						
+						Financeiro::entrada();
+					
 					?>
 				<div class="wraper-form">
 					

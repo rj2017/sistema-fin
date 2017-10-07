@@ -129,6 +129,14 @@ class Usuario{
 			return $sql->fetchAll();
 		}
 
+		public static function countPdvs(){
+			$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.pdv` WHERE ativo = 1 ");
+			$sql->execute();
+
+			return $sql->fetchAll();
+		}
+
+
 		public static function cadastrarUsuario(){
 			if (isset($_POST['cadastrar'])) {
 
