@@ -417,6 +417,27 @@ class Usuario{
 			return $certo;
 		}
 
+		public static function pdvUsuario(){
+
+			if (isset($_POST['cadastrar'])) {
+				
+				$pdv = substr($_POST['pdv'], 0 , 1);
+				$usuario = substr($_POST['usuario'], 0 , 1);
+
+				$pdo = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.usuario-pdv` VALUES(?,?,1)");
+				
+
+				if ($pdo->execute(array($usuario,$pdv))) {
+					
+					Painel::alerta('sucesso','Cadastrado com sucesso!');
+				}else{
+					Painel::alerta('erro', 'Houve um erro na hora do cadastro!');
+				}
+
+				Painel::redirect('pdv_usuario');
+			}
+		}
+
 }
 
 ?>

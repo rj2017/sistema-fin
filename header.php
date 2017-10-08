@@ -67,3 +67,4 @@ Painel::verificarPermissaoPagina(1);
 		</nav><!-- menu -->
 </header>
 <div class="clear"></div>
+

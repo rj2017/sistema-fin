@@ -121,6 +121,7 @@ section.login
 	position: fixed
 	left: 0
 	top: 0
+
 	
 	.menu-aside-wrapper
 		width: 300px
@@ -238,7 +239,7 @@ header
 	min-height: 100vh
 	position: relative
 	left: 300px
-	padding: 10px
+	padding: 10px 10px 10px 20px
 
 
 /** footer **/
@@ -290,7 +291,7 @@ footer
 			padding: 10px
 			border: 2px solid $divider-color
 
-		input[type="text"] , input[type="password"] , select , input[type="file"],input[type="date"]
+		input[type="text"] , input[type="password"] , select , input[type="file"],input[type="date"], #input
 			+input-norm1(100%)
 			max-width: 800px
 			margin-top: 10px
@@ -341,6 +342,50 @@ footer
 
 		&:nth-of-type(3)
 			background-color: #4caf50
+
+/** grafico **/
+
+.grafico
+	
+
+	.dados-grafico
+		width: 100%
+		margin: 0 auto
+
+		.wrapper-grafico
+			display: inline-block
+			margin: 10px
+			padding: 20px
+			text-align: center
+
+		.barra-grafico
+			width: 60px
+			height: 200px
+			display: inline-block
+			position: relative
+
+			.res-entrada
+				background-color: #3949ab
+				width: 100%
+				position: absolute
+				bottom: 0
+
+			.res-saida
+				background-color: #ef5350
+				width: 100%
+				position: absolute
+				bottom: 0
+
+			.res-saldo
+				background-color: #4caf50
+				width: 100%
+				position: absolute
+				bottom: 0
+
+		p
+			text-align: center
+			+text-escuro2(20px)
+			background-color: $divider-color
 
 /** alertas **/
 

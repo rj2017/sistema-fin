@@ -235,7 +235,7 @@ header {
   min-height: 100vh;
   position: relative;
   left: 300px;
-  padding: 10px; }
+  padding: 10px 10px 10px 20px; }
 
 /** footer */
 footer {
@@ -278,7 +278,7 @@ footer {
       text-align: center;
       padding: 10px;
       border: 2px solid #dfdfdf; }
-    .box-content .wraper-form input[type="text"], .box-content .wraper-form input[type="password"], .box-content .wraper-form select, .box-content .wraper-form input[type="file"], .box-content .wraper-form input[type="date"] {
+    .box-content .wraper-form input[type="text"], .box-content .wraper-form input[type="password"], .box-content .wraper-form select, .box-content .wraper-form input[type="file"], .box-content .wraper-form input[type="date"], .box-content .wraper-form #input {
       width: 100%;
       height: 40px;
       max-width: 800px;
@@ -296,6 +296,7 @@ footer {
       background-color: #0097A7;
       border: 0;
       border-radius: 8px;
+      margin-top: 20px;
       font-size: 18px;
       color: #FFFFFF; }
       .box-content .wraper-form input[type="submit"]:hover {
@@ -336,6 +337,41 @@ footer {
       background-color: #ef5350; }
     .box-metrica .box-metrica-single:nth-of-type(3) {
       background-color: #4caf50; }
+
+/** grafico */
+.grafico .dados-grafico {
+  width: 100%;
+  margin: 0 auto; }
+  .grafico .dados-grafico .wrapper-grafico {
+    display: inline-block;
+    margin: 10px;
+    padding: 20px;
+    text-align: center; }
+  .grafico .dados-grafico .barra-grafico {
+    width: 60px;
+    height: 200px;
+    display: inline-block;
+    position: relative; }
+    .grafico .dados-grafico .barra-grafico .res-entrada {
+      background-color: #3949ab;
+      width: 100%;
+      position: absolute;
+      bottom: 0; }
+    .grafico .dados-grafico .barra-grafico .res-saida {
+      background-color: #ef5350;
+      width: 100%;
+      position: absolute;
+      bottom: 0; }
+    .grafico .dados-grafico .barra-grafico .res-saldo {
+      background-color: #4caf50;
+      width: 100%;
+      position: absolute;
+      bottom: 0; }
+  .grafico .dados-grafico p {
+    text-align: center;
+    font-size: 20px;
+    color: #212121;
+    background-color: #dfdfdf; }
 
 /** alertas */
 .box-alerta {
