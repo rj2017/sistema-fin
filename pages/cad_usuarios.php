@@ -18,10 +18,6 @@ Painel::verificarPermissaoPagina(2);
 						<input type="text" name="nome" placeholder="Nome Completo"  />
 						<input type="password" name="senha" placeholder="Senha" />
 						
-						<div class="wraper-text">
-							<label>Foto</label>
-							<input type="file" name="imagem"/>
-						</div>
 
 						<div class="wraper-text">
 							<label>Permissao</label>

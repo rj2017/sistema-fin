@@ -144,7 +144,6 @@ class Usuario{
 					$usuario = $_POST['usuario'];
 					$nome = $_POST['nome'];
 					$senha = $_POST['senha'];
-					@$img = $_FILES['imagem'];
 					$permissao = $_POST['permissao'];
 					$ativo = $_POST['ativo'];
 
@@ -154,25 +153,18 @@ class Usuario{
 						Painel::alerta('erro','O campo Nome está vazio!');
 					}elseif ($senha == '') {
 						Painel::alerta('erro','O campo Senha está vazio!');
-					}elseif ($img == '') {
-						Painel::alerta('erro','Selecione uma imagem para efetuar o cadastro!');
 					}else{
 
 						if ($permissao > $_SESSION['permissao']) {
 
 							Painel::alerta('erro','Você precisa selecionar uma permissão menor que a sua!');
-						}elseif (Painel::imagemValida($img) == false) {
-
-								Painel::alerta('erro','O formato da imagem não é valido!');
-
 						}elseif (self::userExist($usuario)) {
 							Painel::alerta('erro','O Usuário '.$usuario.' já foi cadastrado!');
 						}else{
 							//podemos cadastrar
-							$img = Painel::uploadFile($img);
 
-							$sql = MySql::conectarDb()->prepare("INSERT INTO `tb_admin.usuario` VALUES (null, ?,?,?,?,?,?)");
-							$sql->execute(array($usuario,$nome,$senha,$permissao,$ativo,$img));
+							$sql = MySql::conectarDb()->prepare("INSERT INTO `tb_admin.usuario` VALUES (null, ?,?,?,?,?,'')");
+							$sql->execute(array($usuario,$nome,$senha,$permissao,$ativo));
 
 							Painel::alerta('sucesso', 'Usuário cadastrado com sucesso!');
 							@Painel::redirect(INCLUDE_PATH.'cad_usuarios');

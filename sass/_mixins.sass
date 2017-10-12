@@ -80,6 +80,10 @@
 
 /** medias queryes **/
 
+@mixin tela_grande
+	@media only screen and(max-width:1024px)
+		@content
+
 @mixin tela_media
 	@media only screen and(max-width:900px)
 		@content

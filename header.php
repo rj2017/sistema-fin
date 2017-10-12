@@ -44,8 +44,9 @@ Painel::verificarPermissaoPagina(1);
 				<a <?php echo Painel::selecionadoMenu('fin_dashboard'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_dashboard">Dashboard</a>
 				<a <?php echo Painel::selecionadoMenu('fin_entrada'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_entrada">Entradas</a>
 				<a <?php echo Painel::selecionadoMenu('fin_saida'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="fin_saida">Saídas</a>
-				<a <?php echo Painel::selecionadoMenu('relatorios'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Relatórios</a>
-				<a <?php echo Painel::selecionadoMenu('parametros'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="#">Parâmetrização</a>
+				<a <?php echo Painel::selecionadoMenu('lancamentos'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="lancamentos">Lançamentos</a>
+				<a <?php echo Painel::selecionadoMenu('relatorios'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="relatorios">Relatórios</a>
+				<a <?php echo Painel::selecionadoMenu('parametrizacao'); ?><?php echo Painel::verificarPermissaoMenu(1); ?> href="parametrizacao">Parâmetrização</a>
 			</div><!-- item-menu -->
 
 		</div><!-- menu-aside-wrapper -->

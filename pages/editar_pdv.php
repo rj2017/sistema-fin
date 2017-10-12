@@ -88,13 +88,13 @@
 
 		<div class="paginacao">
 			<?php
-				$totalPagina = ceil(count(Usuario::selectAll('tb_admin.usuario')) / $porPagina); //ceil: função em PHP que arredonda os numeros para um numero maior
+				$totalPagina = ceil(count(Usuario::selectAll('tb_fin.pdv')) / $porPagina); //ceil: função em PHP que arredonda os numeros para um numero maior
 
 				for ($i=1; $i <= $totalPagina; $i++) { 
 					if ($i == $paginaAtual)
-						echo '<a href="'.INCLUDE_PATH.'editar_usuarios?pagina='.$i.'" class="pagina-active" >'.$i.'</a>';
+						echo '<a href="'.INCLUDE_PATH.'editar_pdv?pagina='.$i.'" class="pagina-active" >'.$i.'</a>';
 					else
-					echo '<a href="'.INCLUDE_PATH.'editar_usuarios?pagina='.$i.'" >'.$i.'</a>';
+					echo '<a href="'.INCLUDE_PATH.'editar_pdv?pagina='.$i.'" >'.$i.'</a>';
 				}
 			?>
 		</div><!-- paginacao -->

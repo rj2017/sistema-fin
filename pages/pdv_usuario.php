@@ -37,9 +37,9 @@
 		  		}
 		  	?>
 		  </datalist>
-
+		<div>
 		  <input type="submit" name="cadastrar" value="cadastrar" />
-
+		</div>
 		</form>
 
 	</div>
