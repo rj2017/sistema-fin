@@ -134,7 +134,8 @@ section.login {
   background-color: #757575;
   position: fixed;
   left: 0;
-  top: 0; }
+  top: 0;
+  z-index: 2; }
   .menu-aside .menu-aside-wrapper {
     width: 300px; }
   .menu-aside .box-usuario {

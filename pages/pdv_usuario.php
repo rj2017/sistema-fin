@@ -1,9 +1,9 @@
 <div class="box-content">
-	<h2><i class="fa fa-link"></i>PDV x Usuário<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
+	<h2><i class="fa fa-link"></i>PDV x Usuário</h2>
 
 	<div class="wraper-form">
 		<?php
-			Usuario::pdvUsuario();
+			Financeiro::pdvUsuario();
 		?>
 	
 		<form method="post">
@@ -27,7 +27,7 @@
 
 		  <datalist id="usuarios">
 		    <?php
-		  		$option = Usuario::selectAll('tb_admin.Usuario');
+		  		$option = Usuario::selectAll('tb_admin.usuario');
 
 		  		foreach ($option as $key => $value) {
 		  			$id = $value['id'];
@@ -37,9 +37,11 @@
 		  		}
 		  	?>
 		  </datalist>
+
 		<div>
-		  <input type="submit" name="cadastrar" value="cadastrar" />
+		  <input type="submit" name="cadastrar" value="cadastrar" >
 		</div>
+
 		</form>
 
 	</div>

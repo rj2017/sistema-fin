@@ -14,7 +14,7 @@
 		$lancamentos = Financeiro::pesquisarEntradas(($paginaAtual -1) * $porPagina,$porPagina);
 
 	}else {
-			$lancamentos = Usuario::selectAll('tb_fin.entradas',($paginaAtual -1) * $porPagina,$porPagina);
+			$lancamentos = Financeiro::selectLancamentos('tb_fin.entradas',($paginaAtual -1) * $porPagina,$porPagina);
 	}
 
 	if (isset($_GET['excluir'])) {
@@ -86,7 +86,7 @@
 
 		<div class="paginacao">
 			<?php
-				$totalPagina = ceil(count(Usuario::selectAll('tb_fin.entradas')) / $porPagina); //ceil: função em PHP que arredonda os numeros para um numero maior
+				$totalPagina = ceil(count(Financeiro::selectLancamentos('tb_fin.entradas')) / $porPagina); //ceil: função em PHP que arredonda os numeros para um numero maior
 
 				for ($i=1; $i <= $totalPagina; $i++) { 
 					if ($i == $paginaAtual)
