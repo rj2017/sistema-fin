@@ -153,11 +153,15 @@
 				$sql = MySql::conectarDb()->prepare("DELETE FROM `$tabela` WHERE id = $id");
 			}
 
-			$sql->execute();
+			if($sql->execute())
+				self::alerta('sucesso','Item excluído com sucesso');
+			else
+				self::alerta('erro','Ocorreu um erro na exclusão gentileza verificar');
+
 		}
 
 		public static function redirect($url){
-			echo '<script>location.href="'.$url.'"</script>';
+			echo '<script>window.setTimeout(location.href="'.$url.'",3000)</script>';
 			die();
 		}
 

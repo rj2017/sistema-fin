@@ -15,7 +15,7 @@
 	
 ?>
 <div class="box-content w100">
-	<h2><i class="fa fa-calendar"></i>Período (<?php echo date('d/m/Y',  strtotime($dateIni)).' à'.date('d/m/Y',  strtotime($dateFin)); ?>)<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
+	<h2><i class="fa fa-calendar"></i>Período (<?php echo date('d/m/Y',  strtotime($dateIni)).' à '.date('d/m/Y',  strtotime($dateFin)); ?>)<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
 	<div class="pesquisar-item">
 		<form method="post">
 			<?php  ?>

@@ -5,53 +5,35 @@
 	class Relatorios
 	{
 
-		public static function relatorioEntradas(){
+		public static function gerarPdf(){
+
+			include("./MPDF57/mpdf.php");
+				
+			$pdv = $_SESSION['pdv'];
+			$dataIni = $_POST['data-inicial'];
+			$dataFin = $_POST['data-final'];
+
+			$pdo = MySql::conectarDb()->prepare("(SELECT DISTINCT entradas.descricao, entradas.data, entradas.valor,   CASE pdv.id WHEN $pdv THEN 'Entradas' END AS tipo FROM `tb_fin.pdv` AS pdv INNER JOIN `tb_fin.entradas`AS entradas ON pdv.id = entradas.pdv WHERE pdv.id = ? AND (entradas.data >= ? AND entradas.data <= ? ))UNION ALL (SELECT DISTINCT saidas.descricao, saidas.data, saidas.valor, CASE pdv.id WHEN $pdv THEN 'saídas'  END AS tipo FROM `tb_fin.pdv` AS pdv INNER JOIN `tb_fin.saidas` AS saidas ON pdv.id = saidas.pdv WHERE pdv.id = ? AND (saidas.data >= ? AND saidas.data <= ? ))");
+			$pdo->execute(array($pdv,$dataIni,$dataFin,$pdv,$dataIni,$dataFin));
+
+			$pdo->fetchAll();
+
+			return print_r($pdo);
+
+			/*$mpdf = new mPDF();
+			//tamanho da tela
+			$mpdf->SetDisplayMode("fullpage");
+			//cabeçalho
+			$mpdf->WriteHTML();
+			//saída
+			$mpdf->Output();
+			exit();*/
+
+
+
+
 		
-		$arquivo = date('Y-m-d').'.xls';
-		// Criamos uma tabela HTML com o formato da planilha para excel
-		$tabela = '<table border="1">';
-		$tabela .= '<tr>';
-		$tabela .= '	<td colspan=17><h1><b>Relatorio Protocolo "'.date('Y-m-d').'"</b></h1></tr>';
-		$tabela .= '</tr>';
-		$tabela .= '<tr>';
-		$tabela .= '<td><b>Descrição</b></td>';
-		$tabela .= '<td><b>Data</b></td>';
-		$tabela .= '<td><b>Valor</b></td>';
-		$tabela .= '</tr>';
-
-		$resultado = MySql::conectarDb()->prepare("SELECT * FROM `tbb_fin.entradas` WHERE `id` = ?");
-		$resultado->execute(array($_SESSION['pdv']));
-
-		$resultado->fetchAll();
-
-		foreach ($resultado as $key => $value) {
-			
-			  $id = $value['id'];		
-			$insertsql = "UPDATE protocolo SET relatorio = '1' WHERE id = '" . $id . "' ;"; 
-			mysql_query($insertsql) or die("erro mysql: ".mysql_error());		
-		
-			$tabela .= '<tr>';
-			$tabela .= "<td style='mso-number-format:\@;'>".$dados['num_protocolo']."</td>";
-			$tabela .= '<td>'.utf8_decode($value['descricao']).'</td>';
-			$tabela .= '<td>'.utf8_decode($value['data']).'</td>';
-			$tabela .= '<td>'.utf8_decode($value['valor']).'</td>';
-			
-			
-			$tabela .= '</tr>';
-		}
-
-		$tabela .= '</table>';
-
-		// Força o Download do Arquivo Gerado
-		header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-		header ("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
-		header ("Cache-Control: no-cache, must-revalidate");
-		header ("Pragma: no-cache");
-		header ("Content-type: application/x-msexcel");
-		header ("Content-Disposition: attachment; filename={$arquivo}" );
-		header ("Content-Description: PHP Generated Data" );
-
-		echo $tabela;
+	
 
 	}
 
