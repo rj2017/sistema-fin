@@ -535,6 +535,29 @@ table {
   .wraper-data input[type="date"] {
     width: 47% !important; }
 
+/** relatorios */
+.wraper-relatorios {
+  width: 50%;
+  max-width: 400px;
+  padding: 0 20px;
+  margin: 50px auto;
+  text-align: center; }
+  .wraper-relatorios .single-relatorios {
+    padding: 40px;
+    min-width: 300px;
+    background-color: #00BCD4;
+    display: inline-block; }
+    .wraper-relatorios .single-relatorios:hover {
+      background-color: #0097A7;
+      -moz-box-shadow: "6px,6px,6px";
+      -webkit-box-shadow: "6px,6px,6px";
+      -o-box-shadow: "6px,6px,6px";
+      -ms-box-shadow: "6px,6px,6px";
+      box-shadow: "6px,6px,6px"; }
+    .wraper-relatorios .single-relatorios i {
+      color: #dfdfdf;
+      font-size: 30px; }
+
 /**media queryes* */
 @media only screen and (max-width: 1024px) {
   .lancamentos {

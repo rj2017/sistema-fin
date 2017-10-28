@@ -1,32 +1,37 @@
 <?php
 	Painel::verificarPermissaoPagina(1);
-	$dateIni = date("Y-m-d");
-	$dateFin = date("Y-m-d");
 
-	if (isset($_POST['emitir'])) {
+	if (isset($_GET['emitir'])) {
 
+		ob_start();
+		include('relatorio-geral.php');
+		$conteudo = ob_get_contents();
+		ob_end_clean();
 
-		$dateIni =$_POST['data-inicial'];
-		$dateFin = $_POST['data-final'];
-		$relatorios = Relatorios::gerarPdf();
-
+		$mpdf = new mPDF();
+		//tamanho da tela
+		$mpdf->SetDisplayMode("fullpage");
+		//cabeçalho
+		$mpdf->WriteHTML($conteudo);
+		//saída
+		$mpdf->Output();
+		exit();
 	}
+
+
+
 ?>
-
 <div class="box-content">
-	<h2><i class="fa fa-cog"></i>Página em construção</h2>
+	<h2><i class="fa fa-cloud-download"></i>Emitir Relatório</h2>
 
-			<div class="wraper-form">
-				<form method="post">
-					<div class="wraper-data">
-						<input type="date" name="data-inicial" value="<?php echo $dateIni; ?>">
-						<h2>à</h2>
-						<input type="date" name="data-final" value="<?php echo $dateFin; ?>">
-					</div>
-	
+	<div class="wraper-relatorios">
+			<a href="relatorios?emitir">
+				<div class="single-relatorios">
+					<i class="fa fa-edit"></i>
+					<h2>Lançamentos Gerais</h2>
+				</div>
+			</a>
+		</div>
 
-				<input type="submit" name="emitir" value="Emitir" />
-				</form>
-			</div>
-	
+		<p style="color: red;">O Relatório não funciona no Chrome!</p>
 </div>
