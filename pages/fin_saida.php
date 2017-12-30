@@ -15,6 +15,20 @@ Painel::verificarPermissaoPagina(1);
 					<form method="post">
 						
 						<input type="text" name="descricao" required placeholder="Descrição:"  />
+						<input type="text" list="tipo" name="tipo" placeholder="Tipo:" required>
+						<datalist id="tipo">
+							<?php
+							  		$option = Usuario::selectAll('tb_fin.parametro');
+
+							  		foreach ($option as $key => $value) {
+							  			$id = $value['id'];
+							  			$nome = $value['descricao'];
+
+							  			echo '<option value="'.$id.' - '.$nome.'">';
+							  		}
+							  	?>
+							
+						</datalist>
 						<input type="date" name="data" required placeholder="Data:"  value="<?php echo date ("Y-m-d"); ?>"  />
 						<input type="text" name="valor" required placeholder="Valor:" id="money" />
 						<div class="wraper-text">

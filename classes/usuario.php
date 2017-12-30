@@ -192,7 +192,7 @@ class Usuario{
 							$sql = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.pdv` VALUES (null, ?,?)");
 							$sql->execute(array($nome,$ativo));
 
-							Painel::alerta('sucesso', 'Usuário cadastrado com sucesso!');
+							Painel::alerta('sucesso', 'PDV cadastrado com sucesso!');
 							@Painel::redirect(INCLUDE_PATH.'cad_pdv');
 
 					}

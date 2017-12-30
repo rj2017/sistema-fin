@@ -9,6 +9,7 @@
 			if (isset($_POST['enviar'])){
 				
 				$descricao = $_POST['descricao'];
+				$tipo = strstr($_POST['tipo'], ' ', true);
 				$data = $_POST['data'];
 				$val = (float) $_POST['valor'];
 				$pdv = $_SESSION['pdv'];
@@ -29,8 +30,8 @@
 				while ( $i < $qtn) {
 					
 
-				$pdo = MySql::conectarDB()->prepare("INSERT INTO `tb_fin.entradas`(`id`, `descricao`, `data`,`valor`, `pdv`,`usuario`) VALUES (null,?,?,?,?,?)");
-				$pdo->execute(array($descricao,$data,$val,$pdv,$usuario));
+				$pdo = MySql::conectarDB()->prepare("INSERT INTO `tb_fin.entradas`(`id`, `descricao`, `parametro` , `data`,`valor`, `pdv`,`usuario`) VALUES (null,?,?,?,?,?,?)");
+				$pdo->execute(array($descricao,$tipo,$data,$val,$pdv,$usuario));
 
 				$i++;
 
@@ -52,6 +53,7 @@
 			if (isset($_POST['enviar'])){
 				
 				$descricao = $_POST['descricao'];
+				$tipo = strstr($_POST['saida'], ' ', true);
 				$data = $_POST['data'];
 				$val = (float) $_POST['valor'];
 				$pdv = $_SESSION['pdv'];
@@ -69,8 +71,8 @@
 				while ( $i < $qtn) {
 					
 
-				$pdo = MySql::conectarDB()->prepare("INSERT INTO `tb_fin.saidas`(`id`, `descricao`, `data`,`valor`, `pdv`,`usuario`) VALUES (null,?,?,?,?,?)");
-				$pdo->execute(array($descricao,$data,$val,$pdv,$usuario));
+				$pdo = MySql::conectarDB()->prepare("INSERT INTO `tb_fin.saidas`(`id`, `descricao`, `parametro` , `data`,`valor`, `pdv`,`usuario`) VALUES (null,?,?,?,?,?,?)");
+				$pdo->execute(array($descricao,$tipo,$data,$val,$pdv,$usuario));
 
 				$i++;
 
@@ -88,6 +90,45 @@
 				
 			}
 
+		}
+
+		public static function CadastrarParametros(){
+
+			if (isset($_POST['enviar'])) {
+
+				$descricao = $_POST['descricao'];
+				$ativo = $_POST['ativo'];
+
+				if (self::verificarParametroExiste($descricao)) {
+
+						Painel::alerta('erro','Esse parametro já foi cadastrado!');
+
+					}else{
+
+					$pdo = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.parametro` (`id`,`descricao`, `ativo`) VALUES(null,?,?)");
+					$pdo->execute(array($descricao,$ativo));
+
+					if ($pdo->rowCount() == 1) {
+					Painel::alerta('sucesso','cadastrado com sucesso!');
+						Painel::redirect('parametrizacao');
+					}else{
+					Painel::alerta('erro','Houve um erro, gentileza contactar o administrador!');
+					}
+
+				}
+			}
+		}
+
+		public static function verificarParametroExiste($descricao){
+
+			$sql = MySql::conectarDb()->prepare('SELECT `descricao` FROM `tb_fin.parametro` WHERE `descricao` = ? ');
+			$sql->execute(array($descricao));
+
+			if ($sql->rowCount() == 1) {
+				return true;
+			}else{
+				return false;
+			}
 		}
 
 		public static function somaEntradas($dataIni,$dataFin){
@@ -254,10 +295,10 @@
 
 			if (isset($_POST['cadastrar'])) {
 				
-				$pdv = substr($_POST['pdv'], 0 , 1);
-				$usuario = substr($_POST['usuario'], 0 , 1);
+				$pdv = strstr($_POST['pdv'], ' ', true);
+				$usuario = strstr($_POST['usuario'], ' ', true);
 
-				$pdo = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.usuario-pdv` VALUES(null,?,?,1)");
+				$pdo = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.usuario-pdv` VALUES (null,?,?,1)");
 				
 
 				if ($pdo->execute(array($usuario,$pdv))) {
