@@ -340,10 +340,10 @@ footer {
       background-color: #4caf50; }
 
 /** grafico dashboard-financeiro* */
-.pesquisar-item form {
+.pesquisar-item form, .pesquisar-item2 form {
   padding: 10px 0;
   width: 100%; }
-.pesquisar-item input {
+.pesquisar-item input, .pesquisar-item2 input {
   width: 40%;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -355,7 +355,7 @@ footer {
   color: #757575;
   min-width: 300px;
   margin-top: 20px; }
-.pesquisar-item h2 {
+.pesquisar-item h2, .pesquisar-item2 h2 {
   display: inline-block;
   margin: 0 10px; }
 
