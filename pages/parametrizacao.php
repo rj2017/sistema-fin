@@ -6,14 +6,14 @@ $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
 $parametro = Usuario::selectAll('tb_fin.parametro',($paginaAtual -1) * $porPagina,$porPagina);
 
-if (isset($_GET['excluir'])) {
+/*if (isset($_GET['excluir'])) {
 				
 				$idExcluir = (int)$_GET['excluir'];
 
 				Painel::delete('tb_fin.parametro', $idExcluir);
 				Painel::redirect(INCLUDE_PATH.'parametrizacao');
 
-		}
+		}*/
 
  ?>
 <div class="box-content">
@@ -50,7 +50,7 @@ if (isset($_GET['excluir'])) {
 
 						<th>descrição</th>
 						<th>ativo</th>
-						<th>Excluir</th>
+						<!-- <th>Excluir</th> -->
 					</tr>
 					
 					<?php
@@ -69,7 +69,7 @@ if (isset($_GET['excluir'])) {
 							echo "<tr>";
 								echo '<td>'.$descricao.'</td>';
 								echo '<td>'.$ativo.'</td>';
-								echo '<td><a activeBtn= "delete" href="'.INCLUDE_PATH.'parametrizacao?excluir='.$id.'"><i class="fa fa-times"></i></a></td>';
+								/*echo '<td><a activeBtn= "delete" href="'.INCLUDE_PATH.'parametrizacao?excluir='.$id.'"><i class="fa fa-times"></i></a></td>';*/
 							echo "</tr>";
 
 
