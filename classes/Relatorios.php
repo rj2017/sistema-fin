@@ -18,9 +18,14 @@
 
 	}
 
-	public static function emitirExcel($conteudo){
+	public static function emitirExcel($dateIni, $dateFin){
+
+		$_SESSION['dataIni'] = $dateIni;
+		$_SESSION['dataFim'] = $dateFin;
+
 		$arquivo = 'relatorio-geral.xls';
-			$html = '';
+
+			/*$html = '';
 			$html .= '<table>';
 			$html .= '<tr>';
 			$html .= '<td colspan="3">Planilha de lançamentos</tr>';
@@ -55,6 +60,7 @@
 
 			$html .= '</table>';
 
+*/
 			header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 			header ("Last-Modified: " . gmdate("D,d M Y H:i:s") . " GMT");
 			header ("Cache-Control: no-cache, must-revalidate");
@@ -63,72 +69,31 @@
 			header ("Content-Disposition: attachment; filename=\"{$arquivo}\"" );
 			header ("Content-Description: PHP Generated Data" );
 			// Envia o conteúdo do arquivo
-			echo $html;
+
+			ob_start();
+			include ("pages/relatorio-geral.php");
+			$conteudo = ob_get_contents();
+			ob_end_clean();
+			echo $conteudo;
 			exit;
 	}
 
-	public static function emitirPdf($conteudo){
+	public static function emitirPdf($dateIni, $dateFin){
 
-			$html = '<table border=1';	
-			$html .= '<thead>';
-			$html .= '<tr>';
-			$html .= '<td><b>Descrição</b></td>';
-			$html .= '<td><b>Data</b></td>';
-			$html .= '<td><b>Valor</b></td>';
-			$html .= '<td><b>Tipo</b></td>';
-			$html .= '<td><b>Parâmetro</b></td>';
-			$html .= '<td><b>Usuário</b></td>';
-			$html .= '</tr>';
-			$html .= '</thead>';
-			$html .= '<tbody>';
+			$_SESSION['dataIni'] = $dateIni;
+			$_SESSION['dataFim'] = $dateFin;
+
+			ob_start();
+			include ("pages/relatorio-geral.php");
+			$conteudo = ob_get_contents();
+			ob_end_clean();
+
 			
-			foreach ($conteudo as $key => $value) {
-
-				$descricao = $value['descricao'];
-				$data = $value['data'];
-				$valor = $value['valor'];
-				$tipo = $value['tipo'];
-				$parametro = $value['parametro'];
-				$usuario = $value['usuario'];
-				
-				$html .= '<tr>';
-				$html .= '<td>'.$descricao.'</td>';
-				$html .= '<td>'.$data.'</td>';
-				$html .= '<td>'.$valor.'</td>';
-				$html .= '<td>'.$tipo.'</td>';
-				$html .= '<td>'.$parametro.'</td>';
-				$html .= '<td>'.$usuario.'</td>';
-				$html .= '</tr>';
-			}
-			
-			$html .= '</tbody>';
-			$html .= '</table';
-
-			//referenciar o DomPDF com namespace
-			 use Dompdf\Dompdf;
-
-			// include autoloader
-			require_once("dompdf/autoload.inc.php");
-
-			//Criando a Instancia
-			$dompdf = new DOMPDF();
-			
-			// Carrega seu HTML
-			$dompdf->load_html('
-					<h1 style="text-align: center;">Celke - Relatório de lançamentos</h1>
-					'. $html .'
-				');
-
-			//Renderizar o html
-			$dompdf->render();
-
-			//Exibibir a pÃ¡gina
-			$dompdf->stream(
-				"relatorio_celke.pdf", 
-				array(
-					"Attachment" => true //Para realizar o download somente alterar para true
-				)
-			);
+			$mpdf=new mPDF();
+			$mpdf->WriteHTML($conteudo);
+			$mpdf->Output();
+			exit;
+								
 
 
 	}

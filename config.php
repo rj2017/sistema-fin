@@ -6,7 +6,8 @@ colocar o id do Pdv do usuário na sessao
 */
 
 	@session_start();
-	date_default_timezone_set('America/Sao_Paulo');
+	date_default_timezone_set('America/Sao_Paulo');	
+	require('vendor/autoload.php');
 
 	$autoload = function($class){
 		include('classes/'.$class.'.php');

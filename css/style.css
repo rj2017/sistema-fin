@@ -559,18 +559,20 @@ table {
       font-size: 30px; }
 
 .emitir-rel {
-  width: 100%;
-  text-align: right;
-  padding: 10px; }
-  .emitir-rel a {
-    background-color: #4caf50;
-    padding: 10px;
-    color: #FFFFFF;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 3px; }
-    .emitir-rel a:hover {
-      background-color: #388e3c; }
+  width: auto;
+  margin: 40px; }
+  .emitir-rel input {
+    width: "30%";
+    height: 40px;
+    background-color: #0097A7;
+    border: 0;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #FFFFFF; }
+    .emitir-rel input:hover {
+      background-color: #00BCD4;
+      border-radius: 8px; }
 
 /**media queryes* */
 @media only screen and (max-width: 1024px) {
