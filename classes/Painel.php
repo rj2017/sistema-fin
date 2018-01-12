@@ -13,7 +13,7 @@
 			$usuario = $_POST['login'];
 			$senha = $_POST['senha'];
 
-			$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_admin.usuario` as a INNER JOIN `tb_fin.usuario-pdv` as b ON a.id = b.usuario WHERE a.usuario = ? and a.senha = ? and a.ativo = '1'");
+			$sql = MySql::conectarDb()->prepare("SELECT  a.id AS 'id-user', a.nome AS 'nome', a.senha AS 'senha', a.img AS 'img', a.permissao AS 'permissao', b.pdv AS 'pdv' FROM `tb_admin.usuario` as a INNER JOIN `tb_fin.usuario-pdv` as b ON a.id = b.usuario WHERE a.usuario = ? and a.senha = ? and a.ativo = '1'");
 
 			$sql->execute(array($usuario,$senha));
 
@@ -22,7 +22,7 @@
 				$info = $sql->Fetch();
 
 				$_SESSION['login'] = true;
-				$_SESSION['id'] = $info['id'];
+				$_SESSION['id'] = $info['id-user'];
 				$_SESSION['user'] = $usuario;
 				$_SESSION['nome'] = $info['nome'];
 				$_SESSION['senha'] = $info['senha'];

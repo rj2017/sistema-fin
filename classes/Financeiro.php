@@ -53,7 +53,7 @@
 			if (isset($_POST['enviar'])){
 				
 				$descricao = $_POST['descricao'];
-				$tipo = strstr($_POST['saida'], ' ', true);
+				$tipo = strstr($_POST['tipo'], ' ', true);
 				$data = $_POST['data'];
 				$val = (float) $_POST['valor'];
 				$pdv = $_SESSION['pdv'];
