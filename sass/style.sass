@@ -267,6 +267,8 @@ footer
 	margin-bottom: 20px
 	text-align: center
 
+
+
 	h2
 		+text-escuro2(25px)
 		margin: 10px 0
@@ -292,7 +294,7 @@ footer
 			padding: 10px
 			border: 2px solid $divider-color
 
-		input[type="text"] , input[type="password"] , select , input[type="file"],input[type="date"], #input, input[type="number"]
+		input[type="text"] ,input[type="list"], input[type="password"] , select , input[type="file"],input[type="date"], #input, input[type="number"]
 			+input-norm1(100%)
 			max-width: 800px
 			margin-top: 10px
@@ -301,6 +303,35 @@ footer
 
 		input[type="submit"]
 			+input-norm3(200px)
+
+	.wrap-cod
+		max-width: 800px
+		margin: 10px auto
+
+		form
+			display: inline-block
+			width: 200px
+			display: flex
+			margin: 0 auto
+			align-items: stretch
+
+		input[type="number"]
+			+input-norm1(80%)
+			margin-top: 10px
+			display: inline-block
+
+		.item-cod
+			margin-top: 10px
+			width: 20%
+			height: 40px
+			font-size: 25px
+			background-color: $divider-color
+			text-align: center
+
+
+
+	
+
 
 /* home - page */
 
@@ -564,6 +595,33 @@ table
 
 	input[type="date"]
 		width: 47% !important
+
+/** parametrização **/
+
+.parametros
+	width: 100%
+	display: flex
+	padding: 0 2%
+	margin: 30px 0
+
+	.wraper-parametros
+		width: 33.3%
+		padding: 0 20px
+		text-align: center
+
+		.single-parametros
+			padding: 40px
+			min-width: 300px
+			background-color: $primary-color
+			display: inline-block
+
+			&:hover
+				background-color: $primary-color-dark
+				+box-shadow("6px,6px,6px")
+
+			i
+				color: $divider-color
+				font-size: 30px
 
 /** relatorios **/
 

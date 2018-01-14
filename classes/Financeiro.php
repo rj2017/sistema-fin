@@ -98,6 +98,7 @@
 
 				$descricao = $_POST['descricao'];
 				$ativo = $_POST['ativo'];
+				$pdv = $_SESSION['pdv'];
 
 				if (self::verificarParametroExiste($descricao)) {
 
@@ -105,12 +106,12 @@
 
 					}else{
 
-					$pdo = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.parametro` (`id`,`descricao`, `ativo`) VALUES(null,?,?)");
-					$pdo->execute(array($descricao,$ativo));
+					$pdo = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.parametro` (`id`,`descricao`, `ativo`,`pdv`) VALUES(null,?,?,?)");
+					$pdo->execute(array($descricao,$ativo, $pdv));
 
 					if ($pdo->rowCount() == 1) {
 					Painel::alerta('sucesso','cadastrado com sucesso!');
-						Painel::redirect('parametrizacao');
+						Painel::redirect('cad_tipo');
 					}else{
 					Painel::alerta('erro','Houve um erro, gentileza contactar o administrador!');
 					}
@@ -119,9 +120,97 @@
 			}
 		}
 
+		public static function CadastrarSubParametros(){
+
+			if (isset($_POST['enviar'])) {
+
+				$descricao = $_POST['descricao'];
+				$tipo = $_POST['tipo'];
+				$ativo = $_POST['ativo'];
+				$pdv = $_SESSION['pdv'];
+
+
+				if (self::verificarSubParametroExiste($descricao)) {
+
+						Painel::alerta('erro','Esse parametro já foi cadastrado!');
+
+					}else{
+
+					$pdo = MySql::conectarDb()->prepare("INSERT INTO `tb_fin.sub-parametro` (`id`,`descricao`,`parametro`, `ativo`,`pdv`) VALUES(null,?,?,?,?)");
+					$pdo->execute(array($descricao,$tipo,$ativo,$pdv));
+
+					if ($pdo->rowCount() == 1) {
+					Painel::alerta('sucesso','cadastrado com sucesso!');
+						Painel::redirect('cad_subTipo');
+					}else{
+					Painel::alerta('erro','Houve um erro, gentileza contactar o administrador!');
+					}
+
+				}
+			}
+		}
+
+			public static function selectParametro($start = null, $end = null){
+
+			$pdv = $_SESSION['pdv'];
+
+
+			if ($start == null && $end == null)
+				$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.parametro` WHERE pdv = ? ");
+			else
+				$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.parametro` WHERE  pdv = ? LIMIT $start,$end");
+
+			
+			
+			$sql->execute(array($pdv));
+			return $sql->fetchAll();
+
+		}
+
+		public static function selectSubParametro($parametro ,$start = null, $end = null){
+
+			$pdv = $_SESSION['pdv'];
+
+			if ($parametro == '') {
+
+				if ($start == null && $end == null)
+					$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? ");
+				else
+					$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? LIMIT $start,$end");
+				$sql->execute(array( $pdv));
+				
+			}else{
+
+
+				if ($start == null && $end == null)
+					$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.sub-parametro` WHERE `parametro` = ? AND pdv = ? ");
+				else
+					$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.sub-parametro` WHERE `parametro` = ? AND pdv = ? LIMIT $start,$end");
+				$sql->execute(array($parametro, $pdv));
+			}
+
+			
+			
+			
+			return $sql->fetchAll();
+
+		}
+
 		public static function verificarParametroExiste($descricao){
 
 			$sql = MySql::conectarDb()->prepare('SELECT `descricao` FROM `tb_fin.parametro` WHERE `descricao` = ? ');
+			$sql->execute(array($descricao));
+
+			if ($sql->rowCount() == 1) {
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public static function verificarSubParametroExiste($descricao){
+
+			$sql = MySql::conectarDb()->prepare('SELECT `descricao` FROM `tb_fin.sub-parametro` WHERE `descricao` = ? ');
 			$sql->execute(array($descricao));
 
 			if ($sql->rowCount() == 1) {
