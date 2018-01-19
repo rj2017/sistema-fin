@@ -57,8 +57,10 @@
 					<tr>
 
 						<th>Nome</th>
+						<th>Parametro</th>
+						<th>Sub-Parametro</th>
 						<th>Data</th>
-						<th>Valor</th>
+						<th>total</th>
 						<th>Deletar</th>
 
 					</tr>
@@ -66,12 +68,16 @@
 					<?php
 						foreach ($lancamentos as $key => $value) {
 							$id = $value['id'];
-							$nome = $value['descricao'];
-							$data = $value['data'];
-							$valor = $value['valor'];
+							$nome = $value['item'];
+							$parametro = $value['parametro'];
+							$sub = $value['subParametro'];
+							$data = date("d/m/Y",strtotime($value['data']));
+							$valor = $value['total'];
 
 							echo "<tr>";
 								echo '<td>'.$nome.'</td>';
+								echo '<td>'.$parametro.'</td>';
+								echo '<td>'.$sub.'</td>';
 								echo '<td>'.$data.'</td>';
 								echo '<td> R$ '.$valor.'</td>';
 								echo '<td><a activeBtn= "delete" href="'.INCLUDE_PATH.'lancamentos_entradas?excluir='.$id.'"><i class="fa fa-times"></i></a></td>';

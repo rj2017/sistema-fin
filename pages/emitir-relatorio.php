@@ -10,6 +10,6 @@
 	<a href=<?php echo 'download/relatorioGeral-'.$_SESSION['user'].'.xls' ?> download>Clique aqui para fazer o download</a>
 
 	</div>
-
+<script type="text/javascript"></script>
 </body>
 </html>

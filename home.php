@@ -3,7 +3,10 @@ include('config.php');
 Usuario::updateUsuarioOnline();
 
 Painel::verificarPermissaoPagina(1);
+
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +19,14 @@ Painel::verificarPermissaoPagina(1);
 	<link rel="stylesheet" type="text/css" href="<?php echo INCLUDE_PATH;?>css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo INCLUDE_PATH;?>css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo INCLUDE_PATH;?>css/style.css">
+	<!-- <script src="<?php echo INCLUDE_PATH;?>js/chart.js"></script> -->
 </head>
 <body>
 <?php include("header.php")  ?>
 	
 	<div class="conteudo">
 	<?php
-
+		
 			Painel::loadPager();
 
 	?>

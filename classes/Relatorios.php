@@ -9,9 +9,49 @@
 		public static function relatorioGeral($dataIni, $dataFin){
 
 			$pdv = $_SESSION['pdv'];
+			@$tipo = $_POST['tipo'];
+			@$parametro = $_POST['parametro'];
 
-			$pdo = MySql::conectarDb()->prepare("(SELECT entradas.descricao AS 'descricao', entradas.data AS 'data', entradas.valor AS 'valor',CASE entradas.pdv WHEN ? THEN 'Entrada' END AS tipo, parametros.descricao AS 'parametro', usuario.nome AS 'usuario'  FROM `tb_fin.entradas` AS entradas INNER JOIN `tb_fin.parametro` AS parametros ON entradas.parametro = parametros.id INNER JOIN `tb_admin.usuario` usuario ON entradas.usuario = usuario.id WHERE entradas.pdv = ? AND (entradas.data >= ? AND entradas.data <= ?)) UNION ALL (SELECT  saidas.descricao AS 'descricao', saidas.data AS 'data', saidas.valor AS 'valor',CASE saidas.pdv WHEN ? THEN 'Saida' END AS tipo, parametros.descricao AS 'parametro', usuario.nome AS 'usuario'  FROM `tb_fin.saidas` AS saidas INNER JOIN `tb_fin.parametro` AS parametros ON saidas.parametro = parametros.id INNER JOIN `tb_admin.usuario` usuario ON saidas.usuario = usuario.id WHERE saidas.pdv = ? AND (saidas.data >= ? AND saidas.data <= ?)) ORDER BY data ASC");
-			$pdo->execute(array($pdv, $pdv, $dataIni, $dataFin, $pdv, $pdv, $dataIni, $dataFin));
+			if ($tipo == '') {
+					
+				if ($parametro == '') {
+
+					$pdo = MySql::conectarDb()->prepare("(SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Entrada' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.entradas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?)) UNION ALL (SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Saida' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.saidas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?) ) ORDER BY data ASC");
+				$pdo->execute(array($pdv, $pdv, $dataIni, $dataFin, $pdv, $pdv, $dataIni, $dataFin));
+					
+
+					}
+				else{
+
+				$pdo = MySql::conectarDb()->prepare("(SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Entrada' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.entradas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?) AND a.parametro = ?) UNION ALL (SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Saida' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.saidas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?) AND a.parametro = ? ) ORDER BY data ASC");
+				$pdo->execute(array($pdv, $pdv, $dataIni, $dataFin, $parametro, $pdv, $pdv, $dataIni, $dataFin, $parametro));
+
+				}
+
+			}elseif ($tipo == 1) {
+
+					if ($parametro == '') {
+						$pdo = MySql::conectarDb()->prepare("SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Entrada' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.entradas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?) ORDER BY data ASC");
+					$pdo->execute(array($pdv, $pdv, $dataIni, $dataFin));
+					}else{
+
+					$pdo = MySql::conectarDb()->prepare("SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Entrada' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.entradas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?) AND a.parametro = ?  ORDER BY data ASC");
+					$pdo->execute(array($pdv, $pdv, $dataIni, $dataFin, $parametro));
+				}
+				
+			}elseif ($tipo == 2) {
+
+				if ($parametro == '') {
+					$pdo = MySql::conectarDb()->prepare("SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Saida' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.saidas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?) ORDER BY data ASC");
+					$pdo->execute(array($pdv, $pdv, $dataIni, $dataFin));
+					}else{
+
+
+					$pdo = MySql::conectarDb()->prepare("SELECT a.id AS id,d.descricao AS item, c.descricao AS parametro, b.descricao AS subParametro,CASE a.pdv WHEN ? THEN 'Saida' END AS tipo, a.data AS data, a.quantidade AS quantidade, a.desconto AS desconto, a.valor AS valor, a.total AS total, a.pdv AS pdv, e.nome AS usuario  FROM `tb_fin.saidas` AS a INNER JOIN `tb_fin.sub-parametro` AS b ON a.sub_parametro = b.id INNER JOIN `tb_fin.parametro` AS c ON b.parametro = c.id INNER JOIN `tb_fin.itens` AS d ON a.item = d.id INNER JOIN `tb_admin.usuario` AS e ON a.usuario = e.id WHERE a.pdv = ? AND (a.data >= ? AND a.data <= ?) AND a.parametro = ? ORDER BY data ASC");
+					$pdo->execute(array($pdv, $pdv, $dataIni, $dataFin, $parametro));
+				}
+
+			}
 
 			return $pdo->fetchAll();
 

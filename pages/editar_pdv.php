@@ -28,7 +28,6 @@
 	<h2><i class="fa fa-pencil"></i>Editar PDVs<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
 	
 	<div class="clear"></div>
-	<div class="pesquisar-item">
 			<div class="wraper-form">
 				<form method="post">
 					<input type="text" name="nome" placeholder="Nome: "/>
@@ -44,7 +43,6 @@
 				<input type="submit" name="pesquisar" value="Pesquisar" />
 				</form>
 			</div>
-		</div><!-- pesquisar-usuario -->
 </div>
 
 <div class="box-content">

@@ -28,7 +28,8 @@ body, html
 	width: 100%
 
 .w50
-	width: 49% 
+	width: 50% 
+	border: 1px solid $divider-color
 
 .w25
 	width: 25%
@@ -276,8 +277,15 @@ footer
 	i
 		margin-right: 10px
 
+
 	.wraper-form
 		margin: 20px 2%
+
+
+		form
+			text-align: center
+			padding: 10px
+			border: 2px solid $divider-color
 
 		.wraper-text
 			max-width: 800px
@@ -289,12 +297,7 @@ footer
 			display: block
 			text-align: left
 
-		form
-			text-align: center
-			padding: 10px
-			border: 2px solid $divider-color
-
-		input[type="text"] ,input[type="list"], input[type="password"] , select , input[type="file"],input[type="date"], #input, input[type="number"]
+		input[type="text"] ,input[type="list"], input[type="password"] , select, input[type="file"],input[type="date"], #input, input[type="number"]
 			+input-norm1(100%)
 			max-width: 800px
 			margin-top: 10px
@@ -316,15 +319,15 @@ footer
 			align-items: stretch
 
 		input[type="number"]
-			+input-norm1(80%)
+			+input-norm1(60%)
 			margin-top: 10px
 			display: inline-block
 
 		.item-cod
 			margin-top: 10px
-			width: 20%
+			width: 40%
 			height: 40px
-			font-size: 25px
+			font-size: 18px
 			background-color: $divider-color
 			text-align: center
 
@@ -378,7 +381,7 @@ footer
 /** grafico dashboard-financeiro**/
  
 
-.pesquisar-item, .pesquisar-item2 
+.pesquisar-item 
 	form
 		padding: 10px 0
 		width: 100%
@@ -387,6 +390,20 @@ footer
 		+input-norm(40%)
 		min-width: 300px
 		margin-top: 20px
+
+	h2
+		display: inline-block
+		margin: 0 10px
+
+.pesquisar-item2
+	padding: 10px 0
+	width: 100%
+
+	input
+		+input-norm(40%)
+		min-width: 300px
+		margin-top: 20px
+		display: inline-block
 
 	h2
 		display: inline-block
@@ -664,6 +681,13 @@ table
 				margin: 20px 0
 				width: 100%
 
+	.parametros
+		flex-direction: column
+
+		.wraper-parametros
+			margin: 20px auto
+			width: 100%
+
 
 @include tela-media
 	.left, .right
@@ -685,6 +709,19 @@ table
 
 		label
 			font-size: 14px !important
+
+	.single-parametros
+		min-width: 150px
+		font-size: 20px
+
+	.pesquisar-item, .pesquisar-item2 
+
+		input
+			margin-top: 0
+
+		h2
+			display: block
+			margin: 10px 0
 
 	
 

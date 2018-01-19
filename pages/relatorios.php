@@ -16,7 +16,7 @@
 		$dateIni =$_POST['data-inicial'];
 		$dateFin = $_POST['data-final'];
 
-		$conteudo = Relatorios::relatorioGeral($dateIni, $dateFin);
+	$conteudo = Relatorios::relatorioGeral($dateIni, $dateFin);
 		
 	}
 
@@ -44,17 +44,49 @@
 <div class="box-content">
 	<h2><i class="fa fa-cloud-download"></i>Emitir Relatório</h2>
 
-	<div class="pesquisar-item2">
+	<div class="wraper-form">
 		<form method="post" target="_blank">
-			<?php  ?>
-			<input type="date" name="data-inicial" value="<?php echo $dateIni; ?>">
-			<h2>à</h2>
-			<input type="date" name="data-final" value="<?php echo $dateFin; ?>">
-	<div class="emitir-rel">
-		<input type="submit" name="excel" value="Gerar excel">
-		<input type="submit" name="pdf" value="Gerar PDF">
+			<div class="pesquisar-item2 ">
+				<input type="date" name="data-inicial" value="<?php echo $dateIni; ?>">
+				<h2>à</h2>
+				<input type="date" name="data-final" value="<?php echo $dateFin; ?>">
+			</div>
+			
+		<div class="wraper-text">
+			<label>Tipo</label>
+			<select name="tipo">
+				<option value="">Ambos</option>
+				<option value="1">Entradas</option>
+				<option value="2">Saídas</option>
+			</select>
+		</div>
 
-	</div>
+		<div class="wraper-text">
+			<label>Parametro</label>
+			<select name="parametro" >
+
+				<option value="">-- Escolha um tipo --</option>
+
+				<?php
+			  		$option = Usuario::selectAll('tb_fin.parametro');
+
+			  		foreach ($option as $key => $value) {
+			  			$id = $value['id'];
+			  			$nome = $value['descricao'];
+
+			  			echo '<option value="'.$id.'">'.$nome.'</option>';
+			  		}
+			  	?>
+	
+			</select>
+		</div>
+
+
+			<div class="emitir-rel">
+				<input type="submit" name="excel" value="Gerar excel">
+				<input type="submit" name="pdf" value="Gerar PDF">
+
+			</div>
 
 			
 	</form>

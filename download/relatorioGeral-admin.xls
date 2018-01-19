@@ -39,17 +39,20 @@ table {
 				<table>
 					
 					<tr>
-
-						<th><b>Descrição</b></th>
-						<th><b>Data</b></th>
-						<th><b>Valor</b></th>
+						<th><b>Nome</b></th>
+						<th><b>Parametro</b></th>
+						<th><b>Sub-Parametro</b></th>
 						<th><b>Tipo</b></th>
-						<th><b>Parâmetro</b></th>
+						<th><b>Data</b></th>
 						<th><b>Usuário</b></th>
+						<th><b>Quantidade</b></th>
+						<th><b>Desconto</b></th>
+						<th><b>Valor</b></th>
+						<th><b>total</b></th>
 
 					</tr>
 					
-					<tr><td>luz</td><td>04/10/2017</td><td> R$ 75,98</td><td>Saida</td><td>Serviço</td><td>Comunista</td></tr><tr><td>doces</td><td>04/10/2017</td><td> R$ 55,65</td><td>Entrada</td><td>Serviço</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>jornal</td><td>04/10/2017</td><td> R$ 35,41</td><td>Entrada</td><td>Produto</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>teste</td><td>09/10/2017</td><td> R$ 10,00</td><td>Saida</td><td>Serviço</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>luz</td><td>09/10/2017</td><td> R$ 10,00</td><td>Entrada</td><td>Produto</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>pao</td><td>09/10/2017</td><td> R$ 15,00</td><td>Entrada</td><td>Produto</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>teste</td><td>11/10/2017</td><td> R$ 50,00</td><td>Saida</td><td>Produto</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>açucar</td><td>11/10/2017</td><td> R$ 9,00</td><td>Entrada</td><td>Produto</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>perdas</td><td>11/10/2017</td><td> R$ 1,15</td><td>Saida</td><td>Serviço</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>açucar</td><td>11/10/2017</td><td> R$ 9,00</td><td>Entrada</td><td>Serviço</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>Taca le pau Marco</td><td>09/01/2018</td><td> R$ 50,00</td><td>Entrada</td><td>Serviço</td><td>Comunista</td></tr><tr><td>corte</td><td>09/01/2018</td><td> R$ 1,20</td><td>Entrada</td><td>Serviço</td><td>Raphael de Jesus Bonifacio</td></tr><tr><td>corte</td><td>09/01/2018</td><td> R$ 1,20</td><td>Entrada</td><td>Serviço</td><td>Raphael de Jesus Bonifacio</td></tr>				</table>
+					<tr><td>Xerox</td><td>Serviços</td><td>Serviços</td><td>Entrada</td><td>18/01/2018</td><td>Raphael de Jesus Bonifacio</td><td>15</td><td> R$ 0,00</td><td> R$ 0,15</td><td> R$ 2,25</td></tr><tr><td>Xerox</td><td>Serviços</td><td>Serviços</td><td>Entrada</td><td>18/01/2018</td><td>Raphael de Jesus Bonifacio</td><td>25</td><td> R$ 0,15</td><td> R$ 0,15</td><td> R$ 3,60</td></tr><tr><td>Impressão</td><td>Serviços</td><td>Serviços</td><td>Entrada</td><td>18/01/2018</td><td>Raphael de Jesus Bonifacio</td><td>100</td><td> R$ 2,00</td><td> R$ 1,00</td><td> R$ 98,00</td></tr>				</table>
 								
 		</div><!-- wraper-table -->
 		

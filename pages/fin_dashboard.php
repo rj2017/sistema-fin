@@ -85,3 +85,63 @@
 	</div>
 	<div class="clear"></div>
 </div>
+
+<div class="flex" style="display: flex">
+
+<div class="box-content w50">
+
+	<h2><i class="fa fa-line-chart"></i>Entradas - tipo</h2>
+		<canvas id="myChart" width="100" height="100"></canvas>
+	<script type="text/javascript">
+var ctx = document.getElementById("myChart").getContext('2d');
+
+var myChart = new Chart(ctx,{
+    type: 'pie',
+    data: {
+    	 datasets: [{
+        data: [10, 20, 30],
+         backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)'
+            ]
+   			 }],
+    labels: [
+        'Red',
+        'Yellow',
+        'Blue'
+    ]
+}});
+
+	</script>
+
+</div>
+
+<div class="box-content w50">
+				<h2><i class="fa fa-line-chart"></i>Saídas - tipo</h2>
+					<canvas id="myChart2" width="100" height="100"></canvas>
+				<script type="text/javascript">
+			var ctx = document.getElementById("myChart2").getContext('2d');
+
+			var myChart2 = new Chart(ctx,{
+			    type: 'pie',
+			    data: {
+			    	 datasets: [{
+			        data: [10, 20, 30],
+			         backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)'
+			            ]
+			   			 }],
+			    labels: [
+			        'Red',
+			        'Yellow',
+			        'Blue'
+			    ]
+}});
+
+	</script>
+</div>
+
+</div>

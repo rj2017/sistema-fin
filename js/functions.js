@@ -40,4 +40,84 @@ $(function(){
 		$('#cpf').mask('000.000.000-00', {reverse: true});
 		$('#money').mask('000000000.00', {reverse: true});
 
+
+		/*ação de preenchimento de select*/
+
+		  $('#tipo').change(function(){
+
+	    	if( $(this).val() ) { 
+
+
+		    	$.ajax({
+		    		url: 'http://127.0.0.1/projects/sistema_fin/buscar.php',
+		    		type: 'POST',
+		    		dataType: 'json',
+		    		data: {tipo: $(this).val()},
+		    	})
+		    	.done(function(tipo) {
+
+		    		var retorno = '<option value="">-- Escolha um sub-tipo --</option>';
+
+		    		for (var i = tipo.length - 1; i >= 0; i--) {
+
+		    			var id = tipo[i]['id'];
+		    			var descricao = tipo[i]['descricao'];
+
+		    			retorno += '<option value='+ id +'>'+ descricao +'</option>';
+		    		}
+
+		    		$('#sub-tipo').html(retorno);
+		    		
+		    	})
+		    	.fail(function() {
+		    		/*console.log("error");*/
+		    	})
+		    	.always(function() {
+		    		/*console.log("complete");
+*/
+		    	});
+		    	
+
+		    } else {
+		      $('#sub-tipo').html('<option value="">-- Escolha um sub-tipo --</option>');
+		    }
+		  });
+
+/*entradas e saidas*/
+
+
+		  $('#quantidade').change(function(){
+		  	
+		  	var qtn = $('#quantidade').val();
+		  	var desc = parseFloat($('.desconto').val());
+		  	var vlr = parseFloat($('#valor').val());
+
+		  	
+
+			desc = desc.toFixed(2);
+		  	vlr = vlr.toFixed(2);
+
+
+		  	var total = ( qtn * vlr - desc).toFixed(2);
+
+		  	$('.total').val(total);
+
+		  });
+
+		  $('.desconto').keyup(function() {
+
+		  	var qtn = $('#quantidade').val();
+		  	var desc = parseFloat($('.desconto').val());
+		  	var vlr = parseFloat($('#valor').val());
+
+
+		  	vlr = vlr.toFixed(2);
+		  	desc = desc.toFixed(2);
+
+		  	var total = ( qtn * vlr - desc).toFixed(2);;
+
+		  	$('.total').val(total);
+		  });
+					
+
 });

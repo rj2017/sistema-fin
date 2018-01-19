@@ -1,5 +1,39 @@
 <?php
 Painel::verificarPermissaoPagina(1);
+/* variaveis de preenchimento*/
+$find = '';
+$descricao = '';
+$id_tipo = '';
+$tipo = '';
+$id_subTipo = '';
+$subTipo = '';
+$valor = '';
+/***********/
+
+if (isset($_POST['buscar'])) {
+	$cod = $_POST['cod'];
+
+	$busca = Financeiro::selectItem($cod);
+
+
+
+	foreach ($busca as $key => $value) {
+
+		$descricao = $value['descricao'];
+		$id_tipo = $value['id_parametro'];
+		$tipo = $value['parametro'];
+		$id_subTipo = $value['id_sub-parametro'];
+		$subTipo = $value['sub-parametro'];
+		$valor = $value['valor'];
+	}
+	if ($descricao == '') {
+	Painel::alerta("erro", "não localizamos o código informado");
+	}
+
+
+	$find = $cod;
+	
+	}
 
 ?>
 
@@ -8,8 +42,8 @@ Painel::verificarPermissaoPagina(1);
 		<div class="wrap-cod">
 			<form method="post">
 			
-					<input type="number" name="cod" placeholder="Código">
-					<div class="item-cod"><a href=""><i class="fa fa-search"></i></a></div>
+					<input type="number" name="cod" placeholder="Código" value="<?php echo $find ?>">
+					<input type="submit" class="item-cod" name="buscar" value="buscar" />
 			
 			</form>
 		</div>
@@ -22,6 +56,7 @@ Painel::verificarPermissaoPagina(1);
 
 		<section class="cadastrar">
 					<?php
+					
 						Financeiro::entrada();
 					
 					?>
@@ -29,40 +64,24 @@ Painel::verificarPermissaoPagina(1);
 					
 					<form method="post">
 
+					<input style="display: none;" type="text" name="cod" value="<?php echo $find ?>" />
 						
 						
-						<input type="text" name="descricao" required placeholder="Descrição:"  />
+						<input type="text" name="descricao" required placeholder="Descrição:" readonly="true" value="<?php echo $descricao ?>" />
 
 						<div class="wraper-text">
 							<label>Tipo</label>
-							<select name="tipo" required >
+							<select name="tipo" id="tipo" required >
+								<option value="<?php echo $id_tipo ?>"><?php echo $tipo ?></option>
 
-								<?php
-							  		$option = Usuario::selectAll('tb_fin.parametro');
-
-							  		foreach ($option as $key => $value) {
-							  			$id = $value['id'];
-							  			$nome = $value['descricao'];
-
-							  			echo '<option value="'.$id.'">'.$nome.'</option>';
-							  		}
-							  	?>
+								
 							</select>
 						</div>
 						<div class="wraper-text">
-							<label>Sub-Tipo</label>
-							<select name="tipo" required >
+							<label class="carregando">Sub-Tipo </label><span style="display: none;">Aguarde carregando...</span>
 
-								<?php
-							  		/*$option2 = Financeiro::selectAll('tb_fin.sub-parametro');*/
-
-							  		foreach ($option as $key => $value) {
-							  			$id = $value['id'];
-							  			$nome = $value['descricao'];
-
-							  			echo '<option value="'.$id.'">'.$nome.'</option>';
-							  		}
-							  	?>
+							<select name="sub-tipo" id="sub-tipo" required >
+								<option value="<?php echo $id_subTipo ?>"><?php echo $subTipo ?></option>
 							</select>
 						</div>
 
@@ -70,15 +89,17 @@ Painel::verificarPermissaoPagina(1);
 						
 						<input type="date" name="data" required placeholder="Data:"  value="<?php echo date ("Y-m-d"); ?>"  />
 
-						<div class="wraper-text">
+						<div class="wraper-text" >
 							<label>Quantidade:</label>
-							<input type="number" name="quantidade" value="1" required="" />
+							<input id="quantidade" type="number" name="quantidade" value="1" required=""  />
 						</div>
 
-						<input type="text" name="desconto" required placeholder="Desconto:" id="money"  />
+						<input type="text" name="desconto" required placeholder="Desconto:" id="money" class="desconto"  value="0" />
 
 						
-						<input type="text" name="valor" required placeholder="Valor:" id="money" />
+						<input type="text" id="valor" name="valor" required placeholder="Valor:" value="<?php if($valor > 0){ ?><?php echo number_format($valor, 2, '.', '.');  } ?>" readonly="true" />
+
+						<input type="text" name="total" ng-app="" required placeholder="Total:" id="money" readonly="true"  class="total" />
 
 						
 
@@ -87,6 +108,8 @@ Painel::verificarPermissaoPagina(1);
 							</div>
 
 					</form>
+	
+					
 				</div>
 		</section>
 </div>

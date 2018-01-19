@@ -9,5 +9,5 @@ Painel::verificarPermissaoPagina(1);
 <script src="<?php echo INCLUDE_PATH;?>js/jquery.js"></script>
 <script src="<?php echo INCLUDE_PATH;?>js/bootstrap.js" ></script>
 <script src="<?php echo INCLUDE_PATH;?>js/jquery.mask.js"></script>
-<script src="<?php echo INCLUDE_PATH;?>js/home.js"></script>
+<script src="<?php echo INCLUDE_PATH;?>js/chart.js"></script>
 <script src="<?php echo INCLUDE_PATH;?>js/functions.js"></script>

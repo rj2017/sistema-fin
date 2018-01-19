@@ -60,8 +60,9 @@
 
 			}else{
 				# podemos fazer o que quiser pois a pagina não existe
-				include('404.php');
-
+				/*include('404.php');
+*/
+				header("location:".$url);
 			}
 		}
 
