@@ -384,13 +384,13 @@ class Usuario{
 							Painel::alerta('erro','gentileza colocar pelo menos um parametro para realizar a buscar');
 						}
 
-						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? OR fup.usuario = ?");
+						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario', au.usuario AS 'user' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? OR fup.usuario = ?");
 						$sql->execute(array($pdv, $user));
 						return $sql->fetchAll();
 						
 					}else{
 
-						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? AND fup.usuario = ?");
+						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario', au.usuario AS 'user' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? AND fup.usuario = ?");
 						$sql->execute(array($pdv, $user));
 
 						return $sql->fetchAll();
@@ -411,7 +411,7 @@ class Usuario{
 							Painel::alerta('erro','gentileza colocar pelo menos um parametro para realizar a buscar');
 						}
 
-						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? OR fup.usuario = ? LIMIT $start,$end");
+						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario', au.usuario AS 'user' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? OR fup.usuario = ? LIMIT $start,$end");
 						$sql->execute(array($pdv, $user));
 
 						return $sql->fetchAll();
@@ -420,7 +420,7 @@ class Usuario{
 
 					}else{
 
-						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? AND fup.usuario = ? LIMIT $start,$end");
+						$sql= MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario', au.nome AS 'nome-usuario', au.usuario AS 'user' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id WHERE fup.pdv = ? AND fup.usuario = ? LIMIT $start,$end");
 						$sql->execute(array($pdv, $user));
 
 						return $sql->fetchAll();
@@ -435,10 +435,10 @@ class Usuario{
 		public static function selectAllPdvUsuario($start = null, $end = null){
 
 			if ($start == null && $end == null){
-				$sql = MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id  WHERE fup.ativo = 1 ");
+				$sql = MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario', au.usuario AS 'user' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id  WHERE fup.ativo = 1 ");
 			}
 			else{
-				$sql = MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id  WHERE fup.ativo = 1 LIMIT $start,$end");	
+				$sql = MySql::conectarDb()->prepare("SELECT fup.id AS id, fup.usuario AS usuario, fup.pdv AS pdv, fp.nome AS 'nome-pdv', au.nome AS 'nome-usuario', au.usuario AS 'user' FROM `tb_fin.usuario-pdv` AS fup INNER JOIN `tb_fin.pdv` AS fp ON fup.pdv = fp.id INNER JOIN `tb_admin.usuario` AS au ON fup.usuario = au.id  WHERE fup.ativo = 1 LIMIT $start,$end");	
 			}
 			
 			$sql->execute();

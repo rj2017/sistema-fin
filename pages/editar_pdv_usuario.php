@@ -28,6 +28,7 @@
 	<h2><i class="fa fa-pencil"></i>PDVs x Usuários<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
 	
 	<div class="clear"></div>
+		<div class="pesquisar-item">
 			<div class="wraper-form">
 				<form method="post">
 					<input list="pdvs" name="pdv" placeholder="PDV:" id="input">
@@ -64,15 +65,17 @@
 				<input type="submit" name="pesquisar" value="Pesquisar" />
 				</form>
 			</div>
+		</div>
 </div>
 
 <div class="box-content">
 		<div class="wraper-table">
 				<table>
 					<tr>
-
+						<th>Código PDV</th>
 						<th>PDV</th>
 						<th>Usuário</th>
+						<th>User</th>
 						<th>Deletar</th>
 
 					</tr>
@@ -81,13 +84,17 @@
 
 						foreach ($pdv as $key => $value) {
 							$id = $value['id'];
+							$codPdv = $value['pdv'];
 							$pdv = $value['nome-pdv'];
 							$usuario = $value['nome-usuario'];
+							$user = $value['user'];
 
 
 							echo "<tr>";
+								echo '<td>'.$codPdv.'</td>';
 								echo '<td>'.$pdv.'</td>';
 								echo '<td>'.$usuario.'</td>';
+								echo '<td>'.$user.'</td>';
 								echo '<td><a activeBtn= "delete" href="'.INCLUDE_PATH.'editar_pdv_usuario?excluir='.$id.'"><i class="fa fa-times"></i></a></td>';
 							echo "</tr>";
 

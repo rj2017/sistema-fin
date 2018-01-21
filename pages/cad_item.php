@@ -13,7 +13,7 @@ Painel::verificarPermissaoPagina(1);
 					
 					<form method="post">
 						
-						<input type="text" name="descricao" required placeholder="Descrição"  value="<?php echo $pdv['descricao']; ?>" />
+						<input type="text" name="descricao" required placeholder="Descrição"  value="" />
 
 						<div class="wraper-text">
 							<label>Tipo</label>

@@ -83,8 +83,8 @@
 
 
 			<div class="emitir-rel">
-				<input type="submit" name="excel" value="Gerar excel">
-				<input type="submit" name="pdf" value="Gerar PDF">
+				<input class="excel" type="submit" name="excel" value="Gerar excel">
+				<input class="pdf" type="submit" name="pdf" value="Gerar PDF">
 
 			</div>
 

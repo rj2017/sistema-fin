@@ -12,10 +12,11 @@
 
 			$usuario = $_POST['login'];
 			$senha = $_POST['senha'];
+			$pdv = $_POST['pdv'];
 
-			$sql = MySql::conectarDb()->prepare("SELECT  a.id AS 'id-user', a.nome AS 'nome', a.senha AS 'senha', a.img AS 'img', a.permissao AS 'permissao', b.pdv AS 'pdv' FROM `tb_admin.usuario` as a INNER JOIN `tb_fin.usuario-pdv` as b ON a.id = b.usuario WHERE a.usuario = ? and a.senha = ? and a.ativo = '1'");
+			$sql = MySql::conectarDb()->prepare("SELECT  a.id AS 'id-user', a.nome AS 'nome', a.senha AS 'senha', a.img AS 'img', a.permissao AS 'permissao', b.pdv AS 'pdv' FROM `tb_admin.usuario` as a INNER JOIN `tb_fin.usuario-pdv` as b ON a.id = b.usuario WHERE a.usuario = ? and a.senha = ? and b.pdv = ?  and a.ativo = '1'");
 
-			$sql->execute(array($usuario,$senha));
+			$sql->execute(array($usuario,$senha,$pdv));
 
 			if ($sql->rowCount() == 1) {
 

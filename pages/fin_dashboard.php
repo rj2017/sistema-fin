@@ -16,7 +16,7 @@
 ?>
 <div class="box-content w100">
 	<h2><i class="fa fa-calendar"></i>Período (<?php echo date('d/m/Y',  strtotime($dateIni)).' à '.date('d/m/Y',  strtotime($dateFin)); ?>)<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
-	<div class="pesquisar-item">
+	<div class="pesquisar-item pesquisar">
 		<form method="post">
 			<?php  ?>
 			<input type="date" name="data-inicial" value="<?php echo $dateIni; ?>">
@@ -86,7 +86,7 @@
 	<div class="clear"></div>
 </div>
 
-<div class="flex" style="display: flex">
+<!-- <div class="flex" style="display: flex">
 
 <div class="box-content w50">
 
@@ -144,4 +144,4 @@ var myChart = new Chart(ctx,{
 	</script>
 </div>
 
-</div>
+</div> -->

@@ -223,25 +223,68 @@
 
 			$pdv = $_SESSION['pdv'];
 
-			if ($parametro == '') {
+			if (isset($_POST['pesquisar'])) {
 
-				if ($start == null && $end == null)
-					$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? ");
-				else
-					$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? LIMIT $start,$end");
-				$sql->execute(array( $pdv));
-				
+				$descricao = $_POST['nome'];
+				$tipo = $_POST['tipo'];
+				$ativo = $_POST['ativo'];
+
+				if ($descricao == '') {
+					if ($tipo =='') {
+						if ($start == null && $end == null)
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? ");
+						else
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? LIMIT $start,$end");
+						$sql->execute(array( $pdv, $ativo));
+						
+					}else{
+						if ($start == null && $end == null)
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? AND a.parametro = ? ");
+						else
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? AND a.parametro = ? LIMIT $start,$end");
+						$sql->execute(array( $pdv, $ativo,$tipo));
+					}
+				}else{
+					if ($tipo =='') {
+						if ($start == null && $end == null)
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? AND a.descricao = ? ");
+						else
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? AND a.descricao = ? LIMIT $start,$end");
+						$sql->execute(array( $pdv, $ativo,$descricao));
+						
+					}else{
+						if ($start == null && $end == null)
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? AND a.parametro = ? AND a.descricao = ? ");
+						else
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? AND a.ativo = ? AND a.parametro = ? AND a.descricao = ? LIMIT $start,$end");
+						$sql->execute(array( $pdv, $ativo,$tipo, $descricao));
+
+					}
+				}
+			
+
 			}else{
 
 
-				if ($start == null && $end == null)
-					$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.sub-parametro` WHERE `parametro` = ? AND pdv = ? ");
-				else
-					$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.sub-parametro` WHERE `parametro` = ? AND pdv = ? LIMIT $start,$end");
-				$sql->execute(array($parametro, $pdv));
-			}
+					if ($parametro == '') {
 
-			
+						if ($start == null && $end == null)
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? ");
+						else
+							$sql = MySql::conectarDb()->prepare("SELECT a.id AS 'id', a.descricao AS 'descricao', b.descricao AS 'parametro', a.ativo AS 'ativo' FROM `tb_fin.sub-parametro` AS a INNER JOIN `tb_fin.parametro` AS b ON a.parametro = b.id WHERE  a.pdv = ? LIMIT $start,$end");
+						$sql->execute(array( $pdv));
+						
+					}else{
+
+
+						if ($start == null && $end == null)
+							$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.sub-parametro` WHERE `parametro` = ? AND pdv = ? ");
+						else
+							$sql = MySql::conectarDb()->prepare("SELECT * FROM `tb_fin.sub-parametro` WHERE `parametro` = ? AND pdv = ? LIMIT $start,$end");
+						$sql->execute(array($parametro, $pdv));
+					}
+
+			}
 			
 			
 			return $sql->fetchAll();

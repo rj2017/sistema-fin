@@ -49,7 +49,7 @@ $(function(){
 
 
 		    	$.ajax({
-		    		url: 'http://127.0.0.1/projects/sistema_fin/buscar.php',
+		    		url: 'http://sistema.dev3tech.com.br/buscar.php',
 		    		type: 'POST',
 		    		dataType: 'json',
 		    		data: {tipo: $(this).val()},

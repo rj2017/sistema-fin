@@ -8,9 +8,10 @@ $parametro = Financeiro::selectParametro(($paginaAtual -1) * $porPagina,$porPagi
 
 ?>
 <div class="box-content">
-	<h2><a href="parametrizacao"><i class="fa fa-arrow-circle-left left"></i></a><i class="fa fa-pencil"></i>Editar Tipo<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
+	<h2><a href="parametrizacao"><i class="fa fa-arrow-circle-left left"></i></a><i class="fa fa-search"></i>Tipo<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
 	
 	<div class="clear"></div>
+	<div class="pesquisar-item">
 			<div class="wraper-form">
 				<form method="post">
 					<input type="text" name="nome" placeholder="Nome: "/>
@@ -26,6 +27,7 @@ $parametro = Financeiro::selectParametro(($paginaAtual -1) * $porPagina,$porPagi
 				<input type="submit" name="pesquisar" value="Pesquisar" />
 				</form>
 			</div>
+		</div>
 </div>
 
 <div class="box-content">

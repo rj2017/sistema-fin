@@ -81,7 +81,7 @@
 								echo '<td>'.$parametro.'</td>';
 								echo '<td>'.$sub.'</td>';
 								echo '<td>'.$data.'</td>';
-								echo '<td> R$ '.$valor.'</td>';
+								echo '<td> R$ '.number_format($valor, 2, ',', ' ').'</td>';
 								echo '<td><a activeBtn= "delete" href="'.INCLUDE_PATH.'lancamentos_entradas?excluir='.$id.'"><i class="fa fa-times"></i></a></td>';
 							echo "</tr>";
 

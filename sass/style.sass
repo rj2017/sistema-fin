@@ -381,7 +381,7 @@ footer
 /** grafico dashboard-financeiro**/
  
 
-.pesquisar-item 
+.pesquisar 
 	form
 		padding: 10px 0
 		width: 100%
@@ -625,20 +625,61 @@ table
 		width: 33.3%
 		padding: 0 20px
 		text-align: center
+		border: 3px solid #fff
 
-		.single-parametros
+		&:nth-of-type(1)
+			background-color: $green
 			padding: 40px
 			min-width: 300px
-			background-color: $primary-color
 			display: inline-block
+			
 
 			&:hover
-				background-color: $primary-color-dark
+				background-color: $green2
 				+box-shadow("6px,6px,6px")
 
 			i
 				color: $divider-color
 				font-size: 30px
+
+			a
+				text-decoration: none
+
+		&:nth-of-type(2)
+			background-color: $yelow
+			padding: 40px
+			min-width: 300px
+			display: inline-block
+			
+
+			&:hover
+				background-color: $yelow2
+				+box-shadow("6px,6px,6px")
+
+			i
+				color: $divider-color
+				font-size: 30px
+
+			a
+				text-decoration: none
+
+		&:nth-of-type(3)
+			background-color: $blue
+			padding: 40px
+			min-width: 300px
+			display: inline-block
+			
+
+			&:hover
+				background-color: $blue2
+				+box-shadow("6px,6px,6px")
+
+			i
+				color: $divider-color
+				font-size: 30px
+
+			a
+				text-decoration: none
 
 /** relatorios **/
 
@@ -669,6 +710,12 @@ table
 
 	input
 		+input-norm3("30%")
+
+	.excel
+		background-color: $green !important
+
+	.pdf
+		background-color: $text-atention !important
 
 
 /**media queryes**/

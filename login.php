@@ -47,6 +47,7 @@ if (isset($_COOKIE['lembrar'])) {
 				<form method="post">
 					<input type="text" placeholder="Login" name="login" required />
 					<input type="password"  placeholder="senha" name="senha" required />
+					<input type="text" name="pdv" placeholder="PDV: " required />
 					
 					<div class="form-group-login">
 						<label>Lembrar-me</label>
