@@ -62,7 +62,7 @@
 		</div>
 
 		<div class="wraper-text">
-			<label>Parametro</label>
+			<label>Parâmetro</label>
 			<select name="parametro" >
 
 				<option value="">-- Escolha um tipo --</option>

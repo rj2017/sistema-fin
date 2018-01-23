@@ -155,7 +155,7 @@
 				$valor = $_POST['valor'];
 				$pdv = $_SESSION['pdv'];
 
-				if (self::verificarParametroExiste($descricao)) {
+				if (self::verificarItemExiste($descricao)) {
 
 						Painel::alerta('erro','Esse Item já foi cadastrado!');
 
@@ -341,6 +341,20 @@
 		public static function verificarSubParametroExiste($descricao){
 
 			$sql = MySql::conectarDb()->prepare('SELECT `descricao` FROM `tb_fin.sub-parametro` WHERE `descricao` = ? ');
+			$sql->execute(array($descricao));
+
+			if ($sql->rowCount() == 1) {
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		
+
+		public static function verificarItemExiste($descricao){
+
+			$sql = MySql::conectarDb()->prepare('SELECT `descricao` FROM `tb_fin.itens` WHERE `descricao` = ? ');
 			$sql->execute(array($descricao));
 
 			if ($sql->rowCount() == 1) {

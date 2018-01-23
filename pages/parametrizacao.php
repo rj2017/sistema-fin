@@ -10,7 +10,7 @@
 			<a href="cad_tipo">
 				<div class="single-parametros">
 					<i class="fa fa-gear"></i>
-					<h2>Tipo</h2>
+					<h2>Parâmetro</h2>
 				</div>
 			</a>
 		</div>
@@ -19,7 +19,7 @@
 			<a href="cad_subTipo">
 				<div class="single-parametros">
 					<i class="fa fa-gear"></i>
-					<h2>Sub-Tipo</h2>
+					<h2>Sub-Parâmetro</h2>
 				</div>
 			</a>
 		</div>
@@ -45,7 +45,7 @@
 			<a href="edit_tipo">
 				<div class="single-parametros">
 					<i class="fa fa-gear"></i>
-					<h2>Tipo</h2>
+					<h2>Parâmetro</h2>
 				</div>
 			</a>
 		</div>
@@ -54,7 +54,7 @@
 			<a href="edit_subTipo">
 				<div class="single-parametros">
 					<i class="fa fa-gear"></i>
-					<h2>Sub-Tipo</h2>
+					<h2>Sub-Parâmetro</h2>
 				</div>
 			</a>
 		</div>

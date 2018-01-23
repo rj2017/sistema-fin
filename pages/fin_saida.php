@@ -68,7 +68,7 @@ if (isset($_POST['buscar'])) {
 						<input type="text" name="descricao" required placeholder="Descrição:" readonly="true" value="<?php echo $descricao ?>" />
 
 						<div class="wraper-text">
-							<label>Tipo</label>
+							<label>Parâmetro</label>
 							<select name="tipo" id="tipo" required >
 								<option value="<?php echo $id_tipo ?>"><?php echo $tipo ?></option>
 
@@ -76,7 +76,7 @@ if (isset($_POST['buscar'])) {
 							</select>
 						</div>
 						<div class="wraper-text">
-							<label class="carregando">Sub-Tipo </label><span style="display: none;">Aguarde carregando...</span>
+							<label class="carregando">Sub-Parâmetro </label><span style="display: none;">Aguarde carregando...</span>
 
 							<select name="sub-tipo" id="sub-tipo" required >
 								<option value="<?php echo $id_subTipo ?>"><?php echo $subTipo ?></option>

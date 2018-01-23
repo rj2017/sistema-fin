@@ -8,7 +8,7 @@ $parametro = Financeiro::selectParametro(($paginaAtual -1) * $porPagina,$porPagi
 
 ?>
 <div class="box-content">
-	<h2><a href="parametrizacao"><i class="fa fa-arrow-circle-left left"></i></a><i class="fa fa-search"></i>Tipo<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
+	<h2><a href="parametrizacao"><i class="fa fa-arrow-circle-left left"></i></a><i class="fa fa-search"></i>Parâmetro<div class="btn-pesq"><i class="fa fa-search"></i></div></h2>
 	
 	<div class="clear"></div>
 	<div class="pesquisar-item">

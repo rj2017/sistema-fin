@@ -14,7 +14,7 @@ Painel::verificarPermissaoPagina(1);
 
  ?>
 <div class="box-content">
-	<h2><a href="parametrizacao"><i class="fa fa-arrow-circle-left left"></i></a><i class="fa fa-gears"></i>Sub-Parâmetros</h2>
+	<h2><a href="parametrizacao"><i class="fa fa-arrow-circle-left left"></i></a><i class="fa fa-gears"></i>Sub-Parâmetro</h2>
 
 	<section class="cadastrar">
 					<?php
